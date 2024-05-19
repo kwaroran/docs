@@ -1,46 +1,40 @@
 # TTS
 
-TTS (Text to speech) makes character's response to a speech. you can config at the character screen, and set it per-character. As of 1.24.2 version, currently three providers ElevenLabs, Web Speech and VOICEVOX. the config is different for each provider.
+TTS (Text to speech) makes character's response to a speech. the TTS settings (excluding API keys) are embeded to the character, making shared characters to have the same TTS settings.
 
-## Web Speech
-> Additional Program Required ❌
->
-> AI Model Required ❌
-> 
-> Non-Chat AI Model API key Needed ❌
+## Providers
 
-Web Speech is the most accessible TTS.
+These are the TTS providers that are supported by RisuAI. Some of them requires an API key to use, and you must provide the API key in [Other Bots](/characterconfig/otherbots) settings.
 
-To configure Web Speech, just go to the character's TTS menu, and select provider and speech.
-keep in mind, Web Speech's speech varies from browser to browser.
+### Web Speech
 
+Web Speech is the most accessible TTS, which is provided by the browser. It is supported by most of the modern browsers. It is free, and doesn't require any API key. However, it has some limitations:
+- It doesn't support all the languages.
+- The voice quality is not good.
+- Voice varys between the browsers.
 
-## ElevenLabs
-> Additional Program Required ❌
->
-> AI Model Required ❌
-> 
-> Non-Chat AI Model API key Needed ✔️
+### ElevenLabs
 
-ElevenLabs is high-quality paid TTS service.
+ElevenLabs is a TTS provider that provides high quality voices. It requires an API key to use. It supports many languages, and has high quality voices, however, its expensive. You can get the API key from [ElevenLabs](https://elevenlabs.io/)
 
-Before configuring in character, you must provide an api key.
-1. get a api key in [elevenlabs website](https://beta.elevenlabs.io/)
-1. Go to the App's settings > Other bots > ElevenLabs API key and put it.
+### OpenAI
 
-Then you can go to the character's TTS screen and select the provider to ElevenLabs. and set the Speech.
+OpenAI also provides TTS service. It requires an API key to use. However, OpenAI's TTS is not as good, since:
+- The variety of voices are very limited.
+- Customization is limited.
 
-## VOICEVOX
-> Additional Program Required ✔️
->
-> AI Model Required ❌
-> 
-> Non-Chat AI Model API key Needed ❌
+However, If you already have an OpenAI API key, you can just simply use it for the TTS too, making it easier to use.
 
-VOICEVOX is high-quality japanese TTS program.
+### NovelAI
 
-Before configuring in character, you must provide an url.
-1. get a url in [Colab](https://colab.research.google.com/drive/1tyeXJSklNfjW-aZJAib1JfgOMFarAwze) or copy the workspace and run and get url
-1. Go to the App's settings > Other bots > VOICEVOX URL and put it.
+NovelAI also provides TTS service. It requires an API key to use. you can also use custom voice seed, which would make the voice more unique. To get a NovelAI API key, see [NovelAI API Key Guide](/guides/novelaiapi)
 
-Then you can go to the character's TTS screen and select the provider to VOICEVOX. and set the Speech.
+### Hugging Face
+
+Hugging Face also provides TTS service. It requires an API key to use. It has many voices, and supports many languages. To get a Hugging Face API key, see [Hugging Face API Key Guide](/guides/huggingfaceapi)
+
+### VITS
+
+You can use your own VITS model to generate the TTS, directly in the client, without any API key. to setup, first, get a VITS model, in hugging face format, and zip it as `model.zip`. then, upload the model pressing `Select Model` button.
+
+VITS models are embeded to the character, making shared characters to have the same VITS model.

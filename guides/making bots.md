@@ -27,11 +27,3 @@ Traits:
 5. Set the first message, also known as greeting. do not put user's move or speech here, otherwise it cause bad influence to AI.
 6. Go to the character display screen, which you can go by pressing ![](/static/face.png) button.
 7. Set the character's image, and you are done!
-
-## Creating from AI
-
-To create your character with ai,
-1. press + button in the left pannel, press "Create bot from AI" 
-2. press "Create OC bot from AI".
-3. type the information of the character you want to create.
-4. done!
