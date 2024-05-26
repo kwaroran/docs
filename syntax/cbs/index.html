@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.770017556634">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Curly Braced Syntaxes</title>
+    <meta name="title" content="Curly Braced Syntaxes">
+    <meta name="description" content="Curly braced syntaxes (like {{user}}) are used to insert special values into the text. The syntaxes can be used in almost any text field in the...">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/syntax/cbs/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/syntax/cbs/">
+    <meta property="og:title" content="Curly Braced Syntaxes">
+    <meta property="og:description" content="Curly braced syntaxes (like {{user}}) are used to insert special values into the text. The syntaxes can be used in almost any text field in the...">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/syntax/cbs/">
+    <meta property="twitter:title" content="Curly Braced Syntaxes">
+    <meta property="twitter:description" content="Curly braced syntaxes (like {{user}}) are used to insert special values into the text. The syntaxes can be used in almost any text field in the...">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../resources/css/retype.css?v=3.5.0.770017556634" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.770017556634" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.770017556634" data-turbo-eval="false" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">RisuAI</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="curly-braced-syntaxes" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#curly-braced-syntaxes">#</doc-anchor-trigger>
+        <span>Curly Braced Syntaxes</span>
+    </h1>
+</doc-anchor-target>
+<p>Curly braced syntaxes (like <code v-pre>{{user}}</code>) are used to insert special values into the text.
+The syntaxes can be used in almost any text field in the client, including chat messages, character descriptions, and lorebook entries.</p>
+<p>The syntaxes are replaced with the actual values when the message is sent or when the text is displayed in the client.
+The syntaxes can be nested and combined with other syntaxes, for example, <code v-pre>{{calc::{{getvar::a}}+{{getvar::b}}}}</code>.</p>
+<p>The syntaxes are case-insensitive, so <code v-pre>{{user}}</code>, <code v-pre>{{User}}</code>, and <code v-pre>{{USER}}</code> are all the same.
+Some of the syntaxes require parameters, which are separated by <code v-pre>::</code> (two colons).</p>
+<p>Some of the syntaxes require arrays as parameters. use <code v-pre>{{array::A::B::C...}}</code> syntax to create an array.
+Some of the syntaxes are block syntaxes (like <code v-pre>{{#if A}}</code>), which are started with <code v-pre>{{#NAME A}}</code> and ended with <code v-pre>{{/NAME}}</code>. The block syntaxes can be nested, and starts with <code v-pre>#</code>. it can also be closed with <code v-pre>{{/}}</code> instead of <code v-pre>{{/NAME}}</code>. block syntaxes&#x27;s content&#x27;s indentation and whitespace would be trimmed, unless for some syntaxes like <code v-pre>{{#if-pure A}}</code> which would keep the indentation and whitespace.</p>
+<doc-anchor-target id="data-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data-syntaxes">#</doc-anchor-trigger>
+        <span>Data Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="user">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#user">#</doc-anchor-trigger>
+        <span><code v-pre>{{user}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the personas&#x27;s name.</p>
+<doc-anchor-target id="char">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#char">#</doc-anchor-trigger>
+        <span><code v-pre>{{char}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the character&#x27;s name.
+If you are chatting in a group chat, if the speaker is user, this will be replaced with group chat name. if the speaker is character, this will be replaced with the speaker&#x27;s name.</p>
+<doc-anchor-target id="description">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#description">#</doc-anchor-trigger>
+        <span><code v-pre>{{description}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{char_desc}}</code></p>
+</blockquote>
+<p>This will be replaced with the character&#x27;s description.</p>
+<doc-anchor-target id="example_dialogue">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example_dialogue">#</doc-anchor-trigger>
+        <span><code v-pre>{{example_dialogue}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{example_message}}</code></p>
+</blockquote>
+<p>This will be replaced with an array of example dialogue of the character.</p>
+<doc-anchor-target id="persona">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#persona">#</doc-anchor-trigger>
+        <span><code v-pre>{{persona}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{user_persona}}</code></p>
+</blockquote>
+<p>This will be replaced with the persona&#x27;s description.</p>
+<doc-anchor-target id="lorebook">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lorebook">#</doc-anchor-trigger>
+        <span><code v-pre>{{lorebook}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{world_info}}</code></p>
+</blockquote>
+<p>This will be replaced with array of lorebook entries.</p>
+<doc-anchor-target id="history">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#history">#</doc-anchor-trigger>
+        <span><code v-pre>{{history}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{messages}}</code></p>
+</blockquote>
+<p>This will be replaced with array of messages in current chat.</p>
+<doc-anchor-target id="chat_index">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chat_index">#</doc-anchor-trigger>
+        <span><code v-pre>{{chat_index}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the index of the message in the chat.
+The chat index starts from 0 except for the first message. The first message has an index of -1.
+If the <code v-pre>{{chat_index}}</code> is used in non-chat context, it will be replaced with -1.</p>
+<doc-anchor-target id="model">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#model">#</doc-anchor-trigger>
+        <span><code v-pre>{{model}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current model id of the client.</p>
+<doc-anchor-target id="axmodel">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#axmodel">#</doc-anchor-trigger>
+        <span><code v-pre>{{axmodel}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current auxiliary model id of the client.</p>
+<doc-anchor-target id="role">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#role">#</doc-anchor-trigger>
+        <span><code v-pre>{{role}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current role of the message sender.
+If the <code v-pre>{{role}}</code> is used in non-chat context, it will be replaced with <code v-pre>role</code> string.</p>
+<doc-anchor-target id="maxprompt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#maxprompt">#</doc-anchor-trigger>
+        <span><code v-pre>{{maxprompt}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the maxinum tokens setting of the client.</p>
+<doc-anchor-target id="lastmessage">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lastmessage">#</doc-anchor-trigger>
+        <span><code v-pre>{{lastmessage}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the last message in the chat log.</p>
+<doc-anchor-target id="lastmessageid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lastmessageid">#</doc-anchor-trigger>
+        <span><code v-pre>{{lastmessageid}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{lastmessageindex}}</code></p>
+</blockquote>
+<p>This will be replaced with the index of the last message in the chat log.</p>
+<doc-anchor-target id="previous_char_chat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#previous_char_chat">#</doc-anchor-trigger>
+        <span><code v-pre>{{previous_char_chat}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{lastcharmessage}}</code></p>
+</blockquote>
+<p>This will be replaced with the last message of the current character in the chat log.</p>
+<doc-anchor-target id="previous_user_chat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#previous_user_chat">#</doc-anchor-trigger>
+        <span><code v-pre>{{previous_user_chat}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{lastusermessage}}</code></p>
+</blockquote>
+<p>This will be replaced with the last message of the user in the chat log.</p>
+<doc-anchor-target id="previous_chat_loga">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#previous_chat_loga">#</doc-anchor-trigger>
+        <span><code v-pre>{{previous_chat_log::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the chat message with the index of <code v-pre>A</code> in the chat log. If the message does not exist, it will be replaced with <code v-pre>Out of range</code></p>
+<doc-anchor-target id="time-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#time-syntaxes">#</doc-anchor-trigger>
+        <span>Time Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="time">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#time">#</doc-anchor-trigger>
+        <span><code v-pre>{{time}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current time, in the format <code v-pre>HH:MM:SS</code> in client&#x27;s timezone.</p>
+<doc-anchor-target id="timea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#timea">#</doc-anchor-trigger>
+        <span><code v-pre>{{time::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{datetimeformat:A}}</code>, <code v-pre>{{date::A}}</code></p>
+</blockquote>
+<p>This will be replaced with the current time, in format of <code v-pre>A</code> in client&#x27;s timezone.</p>
+<p>The format <code v-pre>A</code> can include the following:</p>
+<ul>
+<li><code v-pre>YYYY</code> for the year.</li>
+<li><code v-pre>YY</code> for the year in two digits.</li>
+<li><code v-pre>MM</code> for the month.</li>
+<li><code v-pre>DD</code> for the day.</li>
+<li><code v-pre>DDDD</code> for the day count of the year.</li>
+<li><code v-pre>HH</code> for the hour, in 24-hour format.</li>
+<li><code v-pre>hh</code> for the hour, in 12-hour format.</li>
+<li><code v-pre>mm</code> for the minute.</li>
+<li><code v-pre>ss</code> for the second.</li>
+<li><code v-pre>A</code> for the AM/PM indicator.</li>
+<li><code v-pre>X</code> for the unix timestamp.</li>
+<li><code v-pre>x</code> for the unix timestamp in milliseconds.</li>
+</ul>
+<p>for example, <code v-pre>{{time::YYYY-MM-DD HH:mm:ss}}</code> will be replaced with the current time in the format <code v-pre>2024-12-31 23:59:59</code> if the current time is <code v-pre>2024-12-31 23:59:59</code>.</p>
+<doc-anchor-target id="date">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#date">#</doc-anchor-trigger>
+        <span><code v-pre>{{date}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current date, in the format <code v-pre>YYYY-MM-DD</code> in client&#x27;s timezone.</p>
+<doc-anchor-target id="isotime">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#isotime">#</doc-anchor-trigger>
+        <span><code v-pre>{{isotime}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current time, in the format <code v-pre>HH:MM:SS</code> in the UTC timezone.</p>
+<doc-anchor-target id="isodate">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#isodate">#</doc-anchor-trigger>
+        <span><code v-pre>{{isodate}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current date, in the format <code v-pre>YYYY-MM-DD</code> in the UTC timezone.</p>
+<doc-anchor-target id="message_time">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#message_time">#</doc-anchor-trigger>
+        <span><code v-pre>{{message_time}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the time when the message was sent.
+The returned time format would determined by the browser or OS settings.</p>
+<p>If the <code v-pre>{{message_time}}</code> is used in non-chat context or the first message, it will be replaced [Cannot get time] string.
+If the message was sent before <code v-pre>{{message_time}}</code> syntax was introduced, it will be replaced with [Cannot get time, message was sent in older version] string.</p>
+<doc-anchor-target id="message_date">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#message_date">#</doc-anchor-trigger>
+        <span><code v-pre>{{message_date}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the date when the message was sent.
+The returned date format would determined by the browser or OS settings.</p>
+<p>If the <code v-pre>{{message_date}}</code> is used in non-chat context or the first message, it will be replaced [Cannot get time] string.
+If the message was sent before <code v-pre>{{message_date}}</code> syntax was introduced, it will be replaced with [Cannot get time, message was sent in older version] string.</p>
+<doc-anchor-target id="message_idle_duration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#message_idle_duration">#</doc-anchor-trigger>
+        <span><code v-pre>{{message_idle_duration}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the time when the user&#x27;s previous message was sent subtracted by the time when the user&#x27;s second previous message was sent.
+The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
+<p>If the <code v-pre>{{message_idle_duration}}</code> is used in non-chat context or the first message, it will be replaced [Cannot get time] string.
+If the message was sent before <code v-pre>{{message_idle_duration}}</code> syntax was introduced, it will be replaced with [Cannot get time, message was sent in older version] string.
+If there are no previous messages, it will be replaced with [No user message found] string.</p>
+<doc-anchor-target id="idle_duration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#idle_duration">#</doc-anchor-trigger>
+        <span><code v-pre>{{idle_duration}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the time when the user&#x27;s previous message was sent subtracted by the current time.
+The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
+<doc-anchor-target id="emotionasset-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#emotionasset-syntaxes">#</doc-anchor-trigger>
+        <span>Emotion/Asset Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="asseta">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#asseta">#</doc-anchor-trigger>
+        <span><code v-pre>{{asset::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the element with the source of the additional asset path data named <code v-pre>A</code> of the current character. type of the element would be determined by the asset type automatically.</p>
+<doc-anchor-target id="emotiona">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#emotiona">#</doc-anchor-trigger>
+        <span><code v-pre>{{emotion::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the image element with the source of the emotion image path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="audioa">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#audioa">#</doc-anchor-trigger>
+        <span><code v-pre>{{audio::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the audio element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="bga">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bga">#</doc-anchor-trigger>
+        <span><code v-pre>{{bg::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the background image element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="videoa">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#videoa">#</doc-anchor-trigger>
+        <span><code v-pre>{{video::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the video element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="video-imga">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#video-imga">#</doc-anchor-trigger>
+        <span><code v-pre>{{video-img::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the video element with the source of the additional asset path data named <code v-pre>A</code> of the current character. unlike <code v-pre>{{video::A}}</code>, the element would be displayed like an image element.</p>
+<doc-anchor-target id="rawa">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rawa">#</doc-anchor-trigger>
+        <span><code v-pre>{{raw::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with additional asset path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="imga">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#imga">#</doc-anchor-trigger>
+        <span><code v-pre>{{img::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the image element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="assetlist">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#assetlist">#</doc-anchor-trigger>
+        <span><code v-pre>{{assetlist}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the array of names of additional assets of the current character.</p>
+<doc-anchor-target id="emotionlist">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#emotionlist">#</doc-anchor-trigger>
+        <span><code v-pre>{{emotionlist}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the array of names of emotion images of the current character.</p>
+<doc-anchor-target id="mathcondition-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mathcondition-syntaxes">#</doc-anchor-trigger>
+        <span>Math/Condition Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#-a">#</doc-anchor-trigger>
+        <span><code v-pre>{{? A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{calc::A}}</code></p>
+</blockquote>
+<p>This will be replaced with the result of the calculation of the provided expression <code v-pre>A</code>. for example, <code v-pre>{{? 5+3}}</code> will be replaced with <code v-pre>8</code>. You can nest other syntaxes in the expression.</p>
+<p>These are the supported operators and functions:</p>
+<ul>
+<li><code v-pre>A+B</code> for addition of <code v-pre>A</code> and <code v-pre>B</code>.</li>
+<li><code v-pre>A-B</code> for subtraction of <code v-pre>B</code> from <code v-pre>A</code>.</li>
+<li><code v-pre>A*B</code> for multiplication of <code v-pre>A</code> and <code v-pre>B</code>.</li>
+<li><code v-pre>A/B</code> for division of <code v-pre>A</code> by <code v-pre>B</code>.</li>
+<li><code v-pre>A%B</code> for remainder of the division of <code v-pre>A</code> by <code v-pre>B</code>.</li>
+<li><code v-pre>A^B</code> for <code v-pre>A</code> raised to the power of <code v-pre>B</code>.</li>
+<li><code v-pre>A||B</code> for <code v-pre>A</code> or <code v-pre>B</code>.</li>
+<li><code v-pre>A&amp;&amp;B</code> for <code v-pre>A</code> and <code v-pre>B</code>.</li>
+<li><code v-pre>!A</code> for not <code v-pre>A</code>.</li>
+<li><code v-pre>A==B</code> for <code v-pre>A</code> is equal to <code v-pre>B</code>.</li>
+<li><code v-pre>A!=B</code> for <code v-pre>A</code> is not equal to <code v-pre>B</code>.</li>
+<li><code v-pre>A&gt;B</code> for <code v-pre>A</code> is greater than <code v-pre>B</code>.</li>
+<li><code v-pre>A&gt;=B</code> for <code v-pre>A</code> is greater than or equal to <code v-pre>B</code>.</li>
+<li><code v-pre>A&lt;B</code> for <code v-pre>A</code> is less than <code v-pre>B</code>.</li>
+<li><code v-pre>A&lt;=B</code> for <code v-pre>A</code> is less than or equal to <code v-pre>B</code>.</li>
+<li><code v-pre>$&lt;name&gt;</code> for getting the value of the chat variable named <code v-pre>&lt;name&gt;</code>. <code v-pre>&lt;name&gt;</code> should be named with only alphanumeric characters and underscore.</li>
+</ul>
+<p>Some of the syntaxes has aliases:</p>
+<ul>
+<li><code v-pre>|</code> for <code v-pre>||</code></li>
+<li><code v-pre>&amp;</code> for <code v-pre>&amp;&amp;</code></li>
+<li><code v-pre>=</code> for <code v-pre>==</code></li>
+<li><code v-pre>≤</code> for <code v-pre>&lt;=</code></li>
+<li><code v-pre>≥</code> for <code v-pre>&gt;=</code></li>
+</ul>
+<p>The boolean values are represented as <code v-pre>1</code> for <code v-pre>true</code> and <code v-pre>0</code> for <code v-pre>false</code>. Note that <code v-pre>{{? A}}</code> syntax is only for numeric and boolean values. for string values, use other syntaxes like <code v-pre>{{equal::A::B}}</code>.</p>
+<doc-anchor-target id="equalab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#equalab">#</doc-anchor-trigger>
+        <span><code v-pre>{{equal::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>. unlike <code v-pre>{{? A}}</code>, this syntax works for any type of values.</p>
+<doc-anchor-target id="not_equalab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#not_equalab">#</doc-anchor-trigger>
+        <span><code v-pre>{{not_equal::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: {{notequal::A::B}}</p>
+</blockquote>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is not equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>. unlike <code v-pre>{{? A}}</code>, this syntax works for any type of values.</p>
+<doc-anchor-target id="floora">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#floora">#</doc-anchor-trigger>
+        <span><code v-pre>{{floor::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the largest integer less than or equal to <code v-pre>A</code>.</p>
+<doc-anchor-target id="ceila">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ceila">#</doc-anchor-trigger>
+        <span><code v-pre>{{ceil::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the smallest integer greater than or equal to <code v-pre>A</code>.</p>
+<doc-anchor-target id="absa">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#absa">#</doc-anchor-trigger>
+        <span><code v-pre>{{abs::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the absolute value of <code v-pre>A</code>.</p>
+<doc-anchor-target id="startswithab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#startswithab">#</doc-anchor-trigger>
+        <span><code v-pre>{{startswith::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> starts with <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="endswithab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#endswithab">#</doc-anchor-trigger>
+        <span><code v-pre>{{endswith::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> ends with <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="containsab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#containsab">#</doc-anchor-trigger>
+        <span><code v-pre>{{contains::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> contains <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="prefill_supported">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#prefill_supported">#</doc-anchor-trigger>
+        <span><code v-pre>{{prefill_supported}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if the model supports prefilling, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="lowera">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lowera">#</doc-anchor-trigger>
+        <span><code v-pre>{{lower::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> converted to lowercase.</p>
+<doc-anchor-target id="uppera">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#uppera">#</doc-anchor-trigger>
+        <span><code v-pre>{{upper::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> converted to uppercase.</p>
+<doc-anchor-target id="capitalizea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#capitalizea">#</doc-anchor-trigger>
+        <span><code v-pre>{{capitalize::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> with the first letter capitalized.</p>
+<doc-anchor-target id="rounda">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rounda">#</doc-anchor-trigger>
+        <span><code v-pre>{{round::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> rounded to the nearest integer.</p>
+<doc-anchor-target id="trima">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#trima">#</doc-anchor-trigger>
+        <span><code v-pre>{{trim::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> with leading and trailing whitespaces removed.</p>
+<doc-anchor-target id="jbtoggled">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#jbtoggled">#</doc-anchor-trigger>
+        <span><code v-pre>{{jbtoggled}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the current state of the jailbreak toggle.
+If jailbreak is enabled, it will be replaced with <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="variable-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#variable-syntaxes">#</doc-anchor-trigger>
+        <span>Variable Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="getvara">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getvara">#</doc-anchor-trigger>
+        <span><code v-pre>{{getvar::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the value of the chat variable <code v-pre>A</code>. If the chat variable <code v-pre>A</code> is not defined, it will be replaced with <code v-pre>null</code>.</p>
+<p>If its possible, it is recommended to use trigger script instead of this syntax.</p>
+<doc-anchor-target id="setvarab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setvarab">#</doc-anchor-trigger>
+        <span><code v-pre>{{setvar::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will set the chat variable <code v-pre>A</code> to <code v-pre>B</code> and be replaced with an empty string. <code v-pre>{{setvar::A::B}}</code> only works when it is in the chat context and it is not the first message.</p>
+<p>If its possible, it is recommended to use trigger script instead of this syntax.</p>
+<doc-anchor-target id="addvarab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#addvarab">#</doc-anchor-trigger>
+        <span><code v-pre>{{addvar::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will increment the chat variable <code v-pre>A</code> by <code v-pre>B</code> and be replaced with an empty string. for example, if variable <code v-pre>A</code> is <code v-pre>5</code> and <code v-pre>{{addvar::A::3}}</code> is used, the variable <code v-pre>A</code> will be <code v-pre>8</code>. <code v-pre>{{addvar::A::B}}</code> only works when it is in the chat context and it is not the first message.</p>
+<doc-anchor-target id="array-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array-syntaxes">#</doc-anchor-trigger>
+        <span>Array Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="arrayabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#arrayabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{array::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with an array of <code v-pre>B</code>, <code v-pre>C</code>, and so on. This can be used to create an array from multiple parameters.</p>
+<p>Currently array uses <code v-pre>§</code> as separator, but this might change in the future. so it is recommended to use this syntax instead of using <code v-pre>§</code> directly.</p>
+<doc-anchor-target id="array_lengtha">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_lengtha">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_length::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: {{arraylength::A}}</p>
+</blockquote>
+<p>This will be replaced with the length of array <code v-pre>A</code>. this would not work with strings.</p>
+<doc-anchor-target id="array_elementab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_elementab">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_element::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the element of array <code v-pre>A</code> at index <code v-pre>B</code>.</p>
+<doc-anchor-target id="array_pushab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_pushab">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_push::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with array <code v-pre>A</code> with element <code v-pre>B</code> pushed to the end.</p>
+<doc-anchor-target id="array_popa">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_popa">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_pop::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with array <code v-pre>A</code> with the last element removed.</p>
+<doc-anchor-target id="array_shifta">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_shifta">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_shift::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with array <code v-pre>A</code> with the first element removed.</p>
+<doc-anchor-target id="array_spliceabcd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_spliceabcd">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_splice::A::B::C::D...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with array <code v-pre>A</code> with <code v-pre>C</code>, <code v-pre>D</code>, and so on inserted at index <code v-pre>B</code>.</p>
+<doc-anchor-target id="splitab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#splitab">#</doc-anchor-trigger>
+        <span><code v-pre>{{split::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with an array of strings that are separated by <code v-pre>B</code> in <code v-pre>A</code>.</p>
+<doc-anchor-target id="joinab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#joinab">#</doc-anchor-trigger>
+        <span><code v-pre>{{join::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with a string that is created by joining the elements of array <code v-pre>A</code> with <code v-pre>B</code>.</p>
+<doc-anchor-target id="utility-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#utility-syntaxes">#</doc-anchor-trigger>
+        <span>Utility Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="slot">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#slot">#</doc-anchor-trigger>
+        <span><code v-pre>{{slot}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>If it is used in prompt template, pipeline or translator prompt, it will be replaced to original slot content. otherwise, it will not be replaced.</p>
+<doc-anchor-target id="slota">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#slota">#</doc-anchor-trigger>
+        <span><code v-pre>{{slot::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>If it is used in <code v-pre>{{#each C D}}</code> block, and if <code v-pre>D</code> is same as <code v-pre>A</code>, it will be replaced to the current element of the array. otherwise, it will not be replaced.</p>
+<doc-anchor-target id="randomab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#randomab">#</doc-anchor-trigger>
+        <span><code v-pre>{{random::A::B...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{random:A,B...}}</code></p>
+</blockquote>
+<p>This will be replaced with a random value from the provided parameters. for example, <code v-pre>{{random::A::B::C}}</code> will be replaced with either <code v-pre>A</code>, <code v-pre>B</code>, or <code v-pre>C</code>.
+If no parameters are provided, it will be replaced with random number between 0 and 1.</p>
+<doc-anchor-target id="pickab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pickab">#</doc-anchor-trigger>
+        <span><code v-pre>{{pick::A::B...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{pick:A,B...}}</code></p>
+</blockquote>
+<p>This would work same as <code v-pre>{{random::A::B...}}</code>, except the seed would be the same for the same message which would make the result consistent. This also doesn&#x27;t work with no parameters.</p>
+<doc-anchor-target id="rolla">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rolla">#</doc-anchor-trigger>
+        <span><code v-pre>{{roll::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{roll:A}}</code></p>
+</blockquote>
+<p>This will be replaced with a random number between 1 and <code v-pre>A</code>. if <code v-pre>A</code> starts with <code v-pre>d</code>, it will be replaced with a random number between 1 and <code v-pre>A</code> without the <code v-pre>d</code>.</p>
+<doc-anchor-target id="spreada">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#spreada">#</doc-anchor-trigger>
+        <span><code v-pre>{{spread::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with a a string created by joining the elements of array <code v-pre>A</code> with <code v-pre>::</code> (two colons). This can be used to make multi-parameter syntaxes from arrays. For example, <code v-pre>{{random::{{spread::{{array::chicken::pizza::hamburger}}}}}}</code> will act same as <code v-pre>{{random::chicken::pizza::hamburger}}</code>.</p>
+<doc-anchor-target id="replaceabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#replaceabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{replace::A::B::C}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> with all occurrences of <code v-pre>B</code> replaced with <code v-pre>C</code>.</p>
+<doc-anchor-target id="rangea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rangea">#</doc-anchor-trigger>
+        <span><code v-pre>{{range::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with an array of numbers from 0 to <code v-pre>A</code> - 1.</p>
+<doc-anchor-target id="lengtha">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lengtha">#</doc-anchor-trigger>
+        <span><code v-pre>{{length::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the length of <code v-pre>A</code>. this would not work with arrays.</p>
+<doc-anchor-target id="none">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#none">#</doc-anchor-trigger>
+        <span><code v-pre>{{none}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{blank}}</code></p>
+</blockquote>
+<p>This will be replaced with an empty string. Useful for removing the default text.</p>
+<p>If its used in first message, the first message will work as if it not exists.</p>
+<doc-anchor-target id="br">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#br">#</doc-anchor-trigger>
+        <span><code v-pre>{{br}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{newline}}</code></p>
+</blockquote>
+<p>This will be replaced with a line break.</p>
+<doc-anchor-target id="tonumbera">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tonumbera">#</doc-anchor-trigger>
+        <span><code v-pre>{{tonumber::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This would trim all non-numeric characters except for <code v-pre>.</code>. This doesn&#x27;t guarantee that the result is a valid number.</p>
+<doc-anchor-target id="block-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#block-syntaxes">#</doc-anchor-trigger>
+        <span>Block Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="if-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#if-a">#</doc-anchor-trigger>
+        <span><code v-pre>{{#if A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the <code v-pre>content</code> if <code v-pre>A</code> is <code v-pre>1</code>, otherwise it will be replaced with an empty string.</p>
+<p>Example:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">{{#if {{equal::1::1}}}}
+Hello Alice!
+{{/if}}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="if-pure-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#if-pure-a">#</doc-anchor-trigger>
+        <span><code v-pre>{{#if-pure A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Same as <code v-pre>{{#if A}}</code>, but it would keep the indentation and whitespace of the content.</p>
+<doc-anchor-target id="each-a-b">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#each-a-b">#</doc-anchor-trigger>
+        <span><code v-pre>{{#each A B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the <code v-pre>content</code> for each element of the array <code v-pre>A</code>. The current element of the array will be replaced with <code v-pre>B</code>.</p>
+<p>Example:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">{{#each {{array::chicken::pizza::hamburger}} item}}
+{{slot::item}}
+{{/each}}</code></pre>
+</doc-codeblock></div>
+<p>will be replaced with</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">chickenpizzahamburger</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="unrecommended-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#unrecommended-syntaxes">#</doc-anchor-trigger>
+        <span>Unrecommended Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<p>Unrecommended syntaxes are deprecated. They are still functional, but they might not work as expected, and might be removed in the future updates.</p>
+<p>Please use the recommended syntaxes instead.</p>
+<doc-anchor-target id="user-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#user-1">#</doc-anchor-trigger>
+        <span><code v-pre>&lt;user&gt;</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Works the same as <code v-pre>{{user}}</code>.
+Deprecated due to inconsistency in naming, and syntax conflict. Use <code v-pre>{{user}}</code> instead.</p>
+<p>Dude to syntax conflict, this syntax might not work as expected.</p>
+<doc-anchor-target id="bot">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bot">#</doc-anchor-trigger>
+        <span><code v-pre>&lt;bot&gt;</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>&lt;char&gt;</code></p>
+</blockquote>
+<p>Works the same as <code v-pre>{{char}}</code>.
+Deprecated due to inconsistency in naming, and syntax conflict. Use <code v-pre>{{char}}</code> instead.</p>
+<p>Dude to syntax conflict, this syntax might not work as expected.</p>
+<doc-anchor-target id="main_prompt">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#main_prompt">#</doc-anchor-trigger>
+        <span><code v-pre>{{main_prompt}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{system_prompt}}</code></p>
+</blockquote>
+<p>This will be replaced with the main prompt of the prompt setting.
+Deprecated due to incompiatibility with the prompt template system.</p>
+<doc-anchor-target id="global_note">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#global_note">#</doc-anchor-trigger>
+        <span><code v-pre>{{global_note}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{ujb}}</code>, <code v-pre>{{system_note}}</code></p>
+</blockquote>
+<p>This will be replaced with the global_note of the prompt setting.
+Deprecated due to incompiatibility with the prompt template system.</p>
+<doc-anchor-target id="personality">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#personality">#</doc-anchor-trigger>
+        <span><code v-pre>{{personality}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{char_persona}}</code></p>
+</blockquote>
+<p>This will be replaced with the character&#x27;s personality description.
+Deprecated due to deprecation of personality description.</p>
+<doc-anchor-target id="scenario">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scenario">#</doc-anchor-trigger>
+        <span><code v-pre>{{scenario}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the character&#x27;s scenario description.
+Deprecated due to deprecation of scenario description.</p>
+<doc-anchor-target id="if-a-b-">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#if-a-b-">#</doc-anchor-trigger>
+        <span><code v-pre>{#if A B #}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the <code v-pre>content</code> if <code v-pre>A</code> is equal to <code v-pre>B</code>, otherwise it will be replaced with an empty string.
+Deprecated due to introduction of blocked <code v-pre>{{#if A}}</code> syntax.</p>
+<p>Use {{#if A}} {{/if}} block syntax instead.</p>
+<doc-anchor-target id="remaindab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#remaindab">#</doc-anchor-trigger>
+        <span><code v-pre>{{remaind::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the remainder of the division of <code v-pre>A</code> by <code v-pre>B</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A%B}}</code> or <code v-pre>{{? A%B}}</code> instead.</p>
+<doc-anchor-target id="greaterab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#greaterab">#</doc-anchor-trigger>
+        <span><code v-pre>{{greater::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is greater than <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&gt;B}}</code> or <code v-pre>{{? A&gt;B}}</code> instead.</p>
+<doc-anchor-target id="greater_equalab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#greater_equalab">#</doc-anchor-trigger>
+        <span><code v-pre>{{greater_equal::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: {{greaterequal::A::B}}</p>
+</blockquote>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is greater than or equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&gt;=B}}</code> or <code v-pre>{{? A&gt;=B}}</code> instead.</p>
+<doc-anchor-target id="lessab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lessab">#</doc-anchor-trigger>
+        <span><code v-pre>{{less::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is less than <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&lt;B}}</code> or <code v-pre>{{? A&lt;B}}</code> instead.</p>
+<doc-anchor-target id="less_equalab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#less_equalab">#</doc-anchor-trigger>
+        <span><code v-pre>{{less_equal::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: {{lessequal::A::B}}</p>
+</blockquote>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is less than or equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&lt;=B}}</code> or <code v-pre>{{? A&lt;=B}}</code> instead.</p>
+<doc-anchor-target id="andab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#andab">#</doc-anchor-trigger>
+        <span><code v-pre>{{and::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> and <code v-pre>B</code> are both <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&amp;&amp;B}}</code> or <code v-pre>{{? A&amp;&amp;B}}</code> instead.</p>
+<doc-anchor-target id="orab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#orab">#</doc-anchor-trigger>
+        <span><code v-pre>{{or::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> or <code v-pre>B</code> is <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A||B}}</code> or <code v-pre>{{? A||B}}</code> instead.</p>
+<doc-anchor-target id="powab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#powab">#</doc-anchor-trigger>
+        <span><code v-pre>{{pow::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> raised to the power of <code v-pre>B</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A^B}}</code> or <code v-pre>{{? A^B}}</code> instead.</p>
+<doc-anchor-target id="nota">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nota">#</doc-anchor-trigger>
+        <span><code v-pre>{{not::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is <code v-pre>0</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::!A}}</code> or <code v-pre>{{? !A}}</code> instead.</p>
+<style>
+    h2, h3 {
+        margin-top: 4rem !important;
+    }
+</style>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../srp/trigger/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Trigger Scripts</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../syntax/html/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">HTML in Risu​AI</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2024. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Curly Braced Syntaxes", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
