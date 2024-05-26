@@ -1,7 +1,7 @@
 # RisuAI Doc
 
 Work in progress RisuAI documentation.
-For Work see, visit Github pages: [RisuAI Doc](https://kwaroran.github.io/risuai-doc/.retype/)
+For Work see, visit Github pages: [RisuAI Doc](https://kwaroran.github.io/docs/.retype/)
 
 When the documentation is complete, it will be available on the RisuAI website.
 
