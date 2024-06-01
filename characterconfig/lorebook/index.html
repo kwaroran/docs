@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.770017718396">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.770529875031">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,11 +32,11 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.770017718396" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.770529875031" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.770017718396" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.770529875031" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.770017718396" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.770529875031" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -281,17 +281,101 @@
 <p>Decorators are advanced conditions, or effects that can be applied to the lore entries. The decorators should be provided at the <doc-anchor-trigger to="#prompt">Prompt</doc-anchor-trigger> field, and should be started with <code v-pre>@@</code>.</p>
 <p>Example:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">@@end
+<pre class="language-none"><code v-pre class="language-none">@@depth 0
 
 This is the prompt</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="end">
+<doc-anchor-target id="depth-n">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#end">#</doc-anchor-trigger>
-        <span>@@end</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#depth-n">#</doc-anchor-trigger>
+        <span>@@depth N</span>
     </h3>
 </doc-anchor-target>
-<p>If this decorator is provided, the AI would put the response of the lore entry at the end of the response, which makes the prompt to be considered very important.</p>
+<p>If this decorator is provided, the AI would put the response of the lore entry at the depth of N. This is useful for the lore entries that should be considered more important.</p>
+<doc-anchor-target id="activate_only_after-n">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#activate_only_after-n">#</doc-anchor-trigger>
+        <span>@@activate_only_after N</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would only activate the lore entry after the Nth chat message. This is useful for the lore entries that should be activated after certain conditions.</p>
+<doc-anchor-target id="activate_only_every-n">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#activate_only_every-n">#</doc-anchor-trigger>
+        <span>@@activate_only_every N</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would only activate the lore entry every Nth chat message. This is useful for the lore entries that should be activated periodically.</p>
+<doc-anchor-target id="reverse_depth-n">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#reverse_depth-n">#</doc-anchor-trigger>
+        <span>@@reverse_depth N</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would put the response of the lore entry at the reverse depth of N. This is useful for the lore entries that should be considered less important.</p>
+<doc-anchor-target id="role-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#role-a">#</doc-anchor-trigger>
+        <span>@@role A</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would consider the lore entry as the role of A. This is useful for the lore entries that should be considered as the role of A. roles can be <code v-pre>user</code>, <code v-pre>system</code> or <code v-pre>assistant</code>.</p>
+<doc-anchor-target id="scan_depth-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scan_depth-a">#</doc-anchor-trigger>
+        <span>@@scan_depth A</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would scan the lore entry for the activation keys at the depth of A, regardless of the <doc-anchor-trigger to="#lorebook-search-depth">Lorebook Search Depth</doc-anchor-trigger>. This is useful for the lore entries that should be activated at the certain depth.</p>
+<doc-anchor-target id="is_greeting-n">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#is_greeting-n">#</doc-anchor-trigger>
+        <span>@@is_greeting N</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would consider the lore entry as the greeting of index N.</p>
+<doc-anchor-target id="position-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#position-a">#</doc-anchor-trigger>
+        <span>@@position A</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would consider the lore entry as the position of A. positions can be <code v-pre>personality</code>, <code v-pre>scenario</code> or <code v-pre>pt_&lt;name&gt;</code>. <code v-pre>pt_&lt;name&gt;</code> is the position of that is provided in prompt template.</p>
+<doc-anchor-target id="ignore_on_max_context">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ignore_on_max_context">#</doc-anchor-trigger>
+        <span>@@ignore_on_max_context</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would ignore the lore entry if the context is full.</p>
+<doc-anchor-target id="additional_keys-abc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#additional_keys-abc">#</doc-anchor-trigger>
+        <span>@@additional_keys A,B,C...</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would consider the lore entry as additional keys of A, and it would also require one of the additional keys to activate the lore entry.</p>
+<doc-anchor-target id="exclude_keys-abc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exclude_keys-abc">#</doc-anchor-trigger>
+        <span>@@exclude_keys A,B,C...</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would consider the lore entry as exclude keys of A, and it would not activate the lore entry if one of the excluded keys is present.</p>
+<doc-anchor-target id="activate">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#activate">#</doc-anchor-trigger>
+        <span>@@activate</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would activate the lore entry, regardless of all other conditions.</p>
+<doc-anchor-target id="dont_activate">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dont_activate">#</doc-anchor-trigger>
+        <span>@@dont_activate</span>
+    </h3>
+</doc-anchor-target>
+<p>If this decorator is provided, the AI would not activate the lore entry, regardless of all other conditions.</p>
 
                                 
                                 <!-- Required only on API pages -->
