@@ -63,11 +63,59 @@ Decorators are advanced conditions, or effects that can be applied to the lore e
 Example:
 
 ```
-@@end
+@@depth 0
 
 This is the prompt
 ```
 
-### @@end
+### @@depth N
 
-If this decorator is provided, the AI would put the response of the lore entry at the end of the response, which makes the prompt to be considered very important.
+If this decorator is provided, the AI would put the response of the lore entry at the depth of N. This is useful for the lore entries that should be considered more important.
+
+### @@activate_only_after N
+
+If this decorator is provided, the AI would only activate the lore entry after the Nth chat message. This is useful for the lore entries that should be activated after certain conditions.
+
+### @@activate_only_every N
+
+If this decorator is provided, the AI would only activate the lore entry every Nth chat message. This is useful for the lore entries that should be activated periodically.
+
+### @@reverse_depth N
+
+If this decorator is provided, the AI would put the response of the lore entry at the reverse depth of N. This is useful for the lore entries that should be considered less important.
+
+### @@role A
+
+If this decorator is provided, the AI would consider the lore entry as the role of A. This is useful for the lore entries that should be considered as the role of A. roles can be `user`, `system` or `assistant`.
+
+### @@scan_depth A
+
+If this decorator is provided, the AI would scan the lore entry for the activation keys at the depth of A, regardless of the [Lorebook Search Depth](#lorebook-search-depth). This is useful for the lore entries that should be activated at the certain depth.
+
+### @@is_greeting N
+
+If this decorator is provided, the AI would consider the lore entry as the greeting of index N.
+
+### @@position A
+
+If this decorator is provided, the AI would consider the lore entry as the position of A. positions can be `personality`, `scenario` or `pt_<name>`. `pt_<name>` is the position of that is provided in prompt template.
+
+### @@ignore_on_max_context
+
+If this decorator is provided, the AI would ignore the lore entry if the context is full.
+
+### @@additional_keys A,B,C...
+
+If this decorator is provided, the AI would consider the lore entry as additional keys of A, and it would also require one of the additional keys to activate the lore entry.
+
+### @@exclude_keys A,B,C...
+
+If this decorator is provided, the AI would consider the lore entry as exclude keys of A, and it would not activate the lore entry if one of the excluded keys is present.
+
+### @@activate
+
+If this decorator is provided, the AI would activate the lore entry, regardless of all other conditions.
+
+### @@dont_activate
+
+If this decorator is provided, the AI would not activate the lore entry, regardless of all other conditions.
