@@ -104,6 +104,10 @@ This will be replaced with the last message of the user in the chat log.
 
 This will be replaced with the chat message with the index of `A` in the chat log. If the message does not exist, it will be replaced with `Out of range`
 
+### `{{first_msg_index}}`
+
+This will be replaced with the index of the first message in the chat log.
+
 ## Time Syntaxes
 
 ### `{{time}}`
@@ -386,6 +390,10 @@ If it is used in prompt template, pipeline or translator prompt, it will be repl
 
 If it is used in `{{#each C D}}` block, and if `D` is same as `A`, it will be replaced to the current element of the array. otherwise, it will not be replaced.
 
+### `{{position::A}}`
+
+If it is used in prompt template, it will be replaced to the lorebooks that uses position `pt_<A>` like `pt_personality`. if the corresponding lorebook does not exist, it will be replaced with an empty string. otherwise, it will not be replaced.
+
 ### `{{random::A::B...}}`
 
 > Alias: `{{random:A,B...}}`
@@ -404,6 +412,12 @@ This would work same as `{{random::A::B...}}`, except the seed would be the same
 > Alias: `{{roll:A}}`
 
 This will be replaced with a random number between 1 and `A`. if `A` starts with `d`, it will be replaced with a random number between 1 and `A` without the `d`.
+
+### `{{rollp::A}}`
+
+> Alias: `{{rollp:A}}`
+
+This would work same as `{{roll::A}}`, except the seed would be the same for the same message which would make the result consistent.
 
 ### `{{spread::A}}`
 
