@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.770529875031">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.770744320760">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.770529875031" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.770744320760" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.770529875031" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.770744320760" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.770529875031" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.770744320760" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -330,6 +330,13 @@ If the <code v-pre>{{role}}</code> is used in non-chat context, it will be repla
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with the chat message with the index of <code v-pre>A</code> in the chat log. If the message does not exist, it will be replaced with <code v-pre>Out of range</code></p>
+<doc-anchor-target id="first_msg_index">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#first_msg_index">#</doc-anchor-trigger>
+        <span><code v-pre>{{first_msg_index}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the index of the first message in the chat log.</p>
 <doc-anchor-target id="time-syntaxes">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#time-syntaxes">#</doc-anchor-trigger>
@@ -780,6 +787,13 @@ If jailbreak is enabled, it will be replaced with <code v-pre>1</code>, otherwis
     </h3>
 </doc-anchor-target>
 <p>If it is used in <code v-pre>{{#each C D}}</code> block, and if <code v-pre>D</code> is same as <code v-pre>A</code>, it will be replaced to the current element of the array. otherwise, it will not be replaced.</p>
+<doc-anchor-target id="positiona">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#positiona">#</doc-anchor-trigger>
+        <span><code v-pre>{{position::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>If it is used in prompt template, it will be replaced to the lorebooks that uses position <code v-pre>pt_&lt;A&gt;</code> like <code v-pre>pt_personality</code>. if the corresponding lorebook does not exist, it will be replaced with an empty string. otherwise, it will not be replaced.</p>
 <doc-anchor-target id="randomab">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#randomab">#</doc-anchor-trigger>
@@ -811,6 +825,16 @@ If no parameters are provided, it will be replaced with random number between 0 
 <p>Alias: <code v-pre>{{roll:A}}</code></p>
 </blockquote>
 <p>This will be replaced with a random number between 1 and <code v-pre>A</code>. if <code v-pre>A</code> starts with <code v-pre>d</code>, it will be replaced with a random number between 1 and <code v-pre>A</code> without the <code v-pre>d</code>.</p>
+<doc-anchor-target id="rollpa">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rollpa">#</doc-anchor-trigger>
+        <span><code v-pre>{{rollp::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{rollp:A}}</code></p>
+</blockquote>
+<p>This would work same as <code v-pre>{{roll::A}}</code>, except the seed would be the same for the same message which would make the result consistent.</p>
 <doc-anchor-target id="spreada">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#spreada">#</doc-anchor-trigger>
