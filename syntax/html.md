@@ -15,6 +15,7 @@ Some tags and attributes are treated specially:
 - `class` attribute: The class names would be renamed to prevent conflicts. since the css's class names are renamed, the class names in the HTML tags would still work.
 - `href` attribute: The attribute would be removed if it is not a valid URL.
 - `translate` attribute: If the attribute is set to `no`, the element won't be translated.
+- `risu-trigger` attribute: If the attribute is set, if the user clicks on the element, the trigger named in the attribute would be triggered.
 
 RisuAI also adds some new XML tags:
 - `<Comment>`: This tag is used to insert comments in the text. The text inside this tag would be hidden for both the user and the AI.
