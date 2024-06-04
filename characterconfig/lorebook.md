@@ -112,6 +112,10 @@ If this decorator is provided, the AI would consider the lore entry as additiona
 
 If this decorator is provided, the AI would consider the lore entry as exclude keys of A, and it would not activate the lore entry if one of the excluded keys is present.
 
+### @@probability N
+
+If this decorator is provided, the AI would only be activated on the probability of N%. This is useful for the lore entries that should be activated randomly.
+
 ### @@activate
 
 If this decorator is provided, the AI would activate the lore entry, regardless of all other conditions.
