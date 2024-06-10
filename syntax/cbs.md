@@ -382,6 +382,7 @@ This will be replaced with the length of array `A`. this would not work with str
 ### `{{array_element::A::B}}`
 
 This will be replaced with the element of array `A` at index `B`.
+index starts from 0. if the index is out of range, it will be replaced with `null`. if index is negative, it will be counted from the end of the array.
 
 ### `{{array_push::A::B}}`
 
