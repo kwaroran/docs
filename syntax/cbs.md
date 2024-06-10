@@ -108,6 +108,22 @@ This will be replaced with the chat message with the index of `A` in the chat lo
 
 This will be replaced with the index of the first message in the chat log.
 
+### `{{screen_width}}`
+
+This will be replaced with the width of the screen in pixels.
+
+### `{{screen_height}}`
+
+This will be replaced with the height of the screen in pixels.
+
+### `{{user_history}}`
+
+This will be replaced with the array of messages of the user in the chat log.
+
+### `{{char_history}}`
+
+This will be replaced with the array of messages of the character in the chat log.
+
 ## Time Syntaxes
 
 ### `{{time}}`
@@ -135,6 +151,12 @@ The format `A` can include the following:
 - `x` for the unix timestamp in milliseconds.
 
 for example, `{{time::YYYY-MM-DD HH:mm:ss}}` will be replaced with the current time in the format `2024-12-31 23:59:59` if the current time is `2024-12-31 23:59:59`.
+
+### `{{time::A::B}}`
+
+>Alias: `{{datetimeformat::A::B}}`, `{{date::A::B}}`
+
+Same as `{{time::A}}`, but the time would be in the unix timestamp `B` instead of the current time.
 
 ### `{{date}}`
 
@@ -173,11 +195,14 @@ If the `{{message_idle_duration}}` is used in non-chat context or the first mess
 If the message was sent before `{{message_idle_duration}}` syntax was introduced, it will be replaced with [Cannot get time, message was sent in older version] string.
 If there are no previous messages, it will be replaced with [No user message found] string.
 
-
 ### `{{idle_duration}}`
 
 This will be replaced with the time when the user's previous message was sent subtracted by the current time.
 The returned time format would be `HH:MM:SS` format.
+
+### `{{message_unixtime_array}}`
+
+This will be replaced with the array of unix timestamps of the chat log.
 
 ## Emotion/Asset Syntaxes
 
