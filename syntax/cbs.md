@@ -326,8 +326,6 @@ If jailbreak is enabled, it will be replaced with `1`, otherwise it will be repl
 
 This will be replaced with the value of the chat variable `A`. If the chat variable `A` is not defined, it will be replaced with `null`.
 
-If its possible, it is recommended to use trigger script instead of this syntax.
-
 ### `{{setvar::A::B}}`
 
 This will set the chat variable `A` to `B` and be replaced with an empty string. `{{setvar::A::B}}` only works when it is in the chat context and it is not the first message.
@@ -337,6 +335,10 @@ If its possible, it is recommended to use trigger script instead of this syntax.
 ### `{{addvar::A::B}}`
 
 This will increment the chat variable `A` by `B` and be replaced with an empty string. for example, if variable `A` is `5` and `{{addvar::A::3}}` is used, the variable `A` will be `8`. `{{addvar::A::B}}` only works when it is in the chat context and it is not the first message.
+
+### `{{getglobalvar::A}}`
+
+This will be replaced with the value of the global variable `A`. If the global variable `A` is not defined, it will be replaced with `null`.
 
 ## Array Syntaxes
 
