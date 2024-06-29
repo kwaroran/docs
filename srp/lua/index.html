@@ -9,21 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>About Scripts</title>
-    <meta name="title" content="About Scripts">
+    <title>Trigger Script (Lua Mode)</title>
+    <meta name="title" content="Trigger Script (Lua Mode)">
+    <meta name="description" content="On trigger script lua mode, you can write a lua script to handle the trigger event. The script will be executed when the trigger event is triggered.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/srp/about/">
+    <link rel="canonical" href="/srp/lua/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/srp/about/">
-    <meta property="og:title" content="About Scripts">
+    <meta property="og:url" content="/srp/lua/">
+    <meta property="og:title" content="Trigger Script (Lua Mode)">
+    <meta property="og:description" content="On trigger script lua mode, you can write a lua script to handle the trigger event. The script will be executed when the trigger event is triggered.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/srp/about/">
-    <meta property="twitter:title" content="About Scripts">
+    <meta property="twitter:url" content="/srp/lua/">
+    <meta property="twitter:title" content="Trigger Script (Lua Mode)">
+    <meta property="twitter:description" content="On trigger script lua mode, you can write a lua script to handle the trigger event. The script will be executed when the trigger event is triggered.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -32,6 +35,7 @@
     <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.772969428206" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
     <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.772969428206" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.772969428206" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -160,12 +164,269 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="about-scripts" class="break-words">
+<doc-anchor-target id="trigger-script-lua-mode" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#about-scripts">#</doc-anchor-trigger>
-        <span>About Scripts</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#trigger-script-lua-mode">#</doc-anchor-trigger>
+        <span>Trigger Script (Lua Mode)</span>
     </h1>
 </doc-anchor-target>
+<p>On trigger script lua mode, you can write a lua script to handle the trigger event. The script will be executed when the trigger event is triggered.</p>
+<doc-anchor-target id="callback-function">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#callback-function">#</doc-anchor-trigger>
+        <span>Callback Function</span>
+    </h2>
+</doc-anchor-target>
+<p>There are three normal callback functions you can use in the lua script:</p>
+<ul>
+<li><code v-pre>onStart(triggerId)</code>: This function will be called when chat is sent.</li>
+<li><code v-pre>onOutput(triggerId)</code>: This function will be called when AI response is received.</li>
+<li><code v-pre>onInput(triggerId)</code>: This function will be called when user input is received.</li>
+</ul>
+<p>Additonally, for button events (like <code v-pre>{{button::Display::TriggerName}}</code>), it calls the function with same name as TriggerName.</p>
+<doc-anchor-target id="example">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
+        <span>Example</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">function onStart(triggerId)
+    print(&quot;onStart: &quot; .. triggerId)
+end
+
+function onOutput(triggerId)
+    print(&quot;onOutput: &quot; .. triggerId)
+end
+
+function onInput(triggerId)
+    print(&quot;onInput: &quot; .. triggerId)
+end
+
+function buttonClick(triggerId)
+    print(&quot;buttonClick: &quot; .. triggerId)
+end</code></pre>
+</doc-codeblock></div>
+<p>The above script will print the triggerId when the corresponding callback function is called, and also print <code v-pre>buttonClick: triggerId</code> when the button <code v-pre>{{button::buttonname::buttonClick}}</code> is clicked.</p>
+<doc-anchor-target id="functions">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#functions">#</doc-anchor-trigger>
+        <span>Functions</span>
+    </h2>
+</doc-anchor-target>
+<p>You can use the following functions in the lua script:</p>
+<doc-anchor-target id="setchatvartriggerid-key-value">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setchatvartriggerid-key-value">#</doc-anchor-trigger>
+        <span><code v-pre>setChatVar(triggerId, key, value)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set a chat variable with the key and value.</p>
+<doc-anchor-target id="getchatvartriggerid-key">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getchatvartriggerid-key">#</doc-anchor-trigger>
+        <span><code v-pre>getChatVar(triggerId, key)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Get the value of a chat variable with the key.</p>
+<doc-anchor-target id="stopchattriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#stopchattriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>stopChat(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Stop the chat. this only works on some trigger events.</p>
+<doc-anchor-target id="alerterrortriggerid-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alerterrortriggerid-message">#</doc-anchor-trigger>
+        <span><code v-pre>alertError(triggerId, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Show an error alert with the message.</p>
+<doc-anchor-target id="alertnormaltriggerid-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alertnormaltriggerid-message">#</doc-anchor-trigger>
+        <span><code v-pre>alertNormal(triggerId, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Show a normal alert with the message.</p>
+<doc-anchor-target id="alertinputtriggerid-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alertinputtriggerid-message">#</doc-anchor-trigger>
+        <span><code v-pre>alertInput(triggerId, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Show an input alert with the message, and return the input value.</p>
+<doc-anchor-target id="setchattriggerid-index-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setchattriggerid-index-message">#</doc-anchor-trigger>
+        <span><code v-pre>setChat(triggerId, index, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the chat message at the index. index starts from 0.</p>
+<doc-anchor-target id="setchatroletriggerid-index-role">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setchatroletriggerid-index-role">#</doc-anchor-trigger>
+        <span><code v-pre>setChatRole(triggerId, index, role)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the chat role at the index. index starts from 0. role can be <code v-pre>user</code> and <code v-pre>char</code>.</p>
+<doc-anchor-target id="cutchattriggerid-start-end">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cutchattriggerid-start-end">#</doc-anchor-trigger>
+        <span><code v-pre>cutChat(triggerId, start, end)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Cut the chat message from start to end. start and end are both 0-based index.
+to cut only one message, use <code v-pre>removeChat(triggerId, index)</code>.</p>
+<doc-anchor-target id="removechattriggerid-index">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#removechattriggerid-index">#</doc-anchor-trigger>
+        <span><code v-pre>removeChat(triggerId, index)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Remove the chat message at the index. index starts from 0.</p>
+<doc-anchor-target id="addchattriggerid-role-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#addchattriggerid-role-message">#</doc-anchor-trigger>
+        <span><code v-pre>addChat(triggerId, role, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Add a chat message with the message and role. role can be <code v-pre>user</code> and <code v-pre>char</code>.</p>
+<doc-anchor-target id="insertchattriggerid-index-role-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#insertchattriggerid-index-role-message">#</doc-anchor-trigger>
+        <span><code v-pre>insertChat(triggerId, index, role, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Insert a chat message at the index with the message and role. index starts from 0. role can be <code v-pre>user</code> and <code v-pre>char</code>.</p>
+<doc-anchor-target id="removechattriggerid-index-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#removechattriggerid-index-1">#</doc-anchor-trigger>
+        <span><code v-pre>removeChat(triggerId, index)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Remove the chat message at the index. index starts from 0.</p>
+<doc-anchor-target id="getchatlengthtriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getchatlengthtriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>getChatLength(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Get the chat length.</p>
+<doc-anchor-target id="getfullchattriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getfullchattriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>getFullChat(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Get the full chat message, with the format of:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">{
+    {role = &quot;user&quot;, data = &quot;user message&quot;},
+    {role = &quot;char&quot;, data = &quot;char message&quot;},
+    ...
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="setfullchattriggerid-chat">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setfullchattriggerid-chat">#</doc-anchor-trigger>
+        <span><code v-pre>setFullChat(triggerId, chat)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the full chat message, with the format of:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">{
+    {role = &quot;user&quot;, data = &quot;user message&quot;},
+    {role = &quot;char&quot;, data = &quot;char message&quot;},
+    ...
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="cbstriggerid-data">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cbstriggerid-data">#</doc-anchor-trigger>
+        <span><code v-pre>cbs(triggerId, data)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Perform a cbs parse with the data. returns the parsed data.</p>
+<p>example:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">print(cbs(triggerId, &quot;hello {{user}}!&quot;))</code></pre>
+</doc-codeblock></div>
+<p>Returns: <code v-pre>hello username!</code></p>
+<doc-anchor-target id="similaritytriggerid-source-value">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#similaritytriggerid-source-value">#</doc-anchor-trigger>
+        <span><code v-pre>similarity(triggerId, source, value)</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>This function requires low level access.</p>
+</blockquote>
+<p>Perform a similarity sort between the source and value.
+source must be a array of strings, and value must be a string.
+return a array of index sorted by similarity.</p>
+<p>This is a async function. use <code v-pre>similarity(triggerId, source, value):await()</code> to wait for the result.</p>
+<doc-anchor-target id="generateimagetriggerid-prompt-negative">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#generateimagetriggerid-prompt-negative">#</doc-anchor-trigger>
+        <span><code v-pre>generateImage(triggerId, prompt, negative)</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>This function requires low level access.</p>
+</blockquote>
+<p>Generate an image with the prompt and negative. returns the asset CBS (like <code v-pre>{{asset::assetId}}</code>).</p>
+<p>This is a async function. use <code v-pre>generateImage(triggerId, prompt, negative):await()</code> to wait for the result.</p>
+<doc-anchor-target id="llmtriggerid-data">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#llmtriggerid-data">#</doc-anchor-trigger>
+        <span><code v-pre>LLM(triggerId, data)</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>This function requires low level access.</p>
+</blockquote>
+<p>Performs a llm request with the data. returns the response.</p>
+<p>data must be a message format, with the format of:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">{
+    -- the message role, can be &quot;system&quot;, &quot;assistant&quot;, &quot;user&quot;
+    {
+        role = &quot;system&quot;,
+        data = &quot;system message&quot;
+    },
+    {
+        role = &quot;assistant&quot;,
+        data = &quot;char message&quot;
+    },
+    {
+        role = &quot;user&quot;,
+        data = &quot;user message&quot;
+    }
+    ...
+}</code></pre>
+</doc-codeblock></div>
+<p>the response format is:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">{
+    success = true,
+    message = &quot;response message&quot;,
+}</code></pre>
+</doc-codeblock></div>
+<p>This is a async function. use <code v-pre>LLM(triggerId, data):await()</code> to wait for the result.</p>
+<doc-anchor-target id="simplellmtriggerid-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#simplellmtriggerid-message">#</doc-anchor-trigger>
+        <span><code v-pre>simpleLLM(triggerId, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>This function requires low level access.</p>
+</blockquote>
+<p>Performs a simple llm request with the message. returns the response.
+both the message and response format is string.</p>
+<p>This is a async function. use <code v-pre>simpleLLM(triggerId, message):await()</code> to wait for the result.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -175,20 +436,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../globalsettings/prompttemplate/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../srp/regex/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Prompt Template</span>
+                                                <span class="block mt-1">Regex Scripts</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../srp/regex/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../srp/trigger/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Regex Scripts</span>
+                                                <span class="block mt-1">Trigger Scripts</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -232,6 +493,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "About Scripts", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Trigger Script (Lua Mode)", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
