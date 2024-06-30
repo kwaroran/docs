@@ -238,10 +238,10 @@ This is a async function. use `simpleLLM(triggerId, message):await()` to wait fo
 ## Tips
 
 - If you do not know how to write a lua script, you can refer to the [lua manual](https://www.lua.org/manual/5.4/) or ask for help to the AI chatbot like RisuAI chat playground.
+- Since the application only offers a small GUI for the lua script, we recommend using an external editor like [VSCode](https://code.visualstudio.com/) for writing the script, and then copy and paste it to the application.
 - We recommend using `log` instead of `alert` or `print` for debugging, as it will not disturb other functions, and displays the data in a more readable format.
 - We recommend using `setState` and `getState` to store data more than `setChatVar` and `getChatVar`, as it supports more data types.
 - Every time the trigger event is triggered, the lua script will be executed from the beginning. So if you want to keep some data, you must use chat variables or state variables.
 - [json.lua](https://github.com/rxi/json.lua) is included in the lua environment, so you can use `json.encode` and `json.decode` to serialize and deserialize JSON data.
-- Since the application only offers a small GUI for the lua script, we recommend using an external editor like [VSCode](https://code.visualstudio.com/) for writing the script, and then copy and paste it to the application.
 - The lua script is executed in a sandbox environment, so you can't access the file system or network.
 - You can't use external libraries except the included `json.lua`.
