@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.773072216702">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.773072315446">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.773072216702" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.773072315446" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.773072216702" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.773072315446" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.773072216702" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.773072216702" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.773072315446" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.773072315446" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -184,6 +184,7 @@
 <li><code v-pre>onInput(triggerId)</code>: This function will be called when user input is received.</li>
 </ul>
 <p>For button events (like <code v-pre>{{button::Display::TriggerName}}</code>), it calls the function with same name as TriggerName.</p>
+<p>You can also use <code v-pre>listenEdit(type, callback)</code> to listen for edit events. The type can be <code v-pre>editRequest</code>, <code v-pre>editDisplay</code>, <code v-pre>editInput</code>, and <code v-pre>editOutput</code>. The callback function will be <code v-pre>callback(triggerId, data)</code>.</p>
 <doc-anchor-target id="example">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
@@ -208,7 +209,12 @@ function buttonClick(triggerId)
 end</code></pre>
 </doc-codeblock></div>
 <p>The above script will print the triggerId when the corresponding callback function is called, and also print <code v-pre>buttonClick: triggerId</code> when the button <code v-pre>{{button::buttonname::buttonClick}}</code> is clicked.</p>
-<p>You can also use <code v-pre>listenEdit(type, callback)</code> to listen for edit events. The type can be <code v-pre>editRequest</code>, <code v-pre>editDisplay</code>, <code v-pre>editInput</code>, and <code v-pre>editOutput</code>. The callback function will be <code v-pre>callback(triggerId, data)</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">listenEdit(&quot;editDisplay&quot;, function(triggerId, data)
+    return &quot;editDisplay: &quot; .. data
+end)</code></pre>
+</doc-codeblock></div>
+<p>The above script will append <code v-pre>editDisplay: </code> to the display data.</p>
 <doc-anchor-target id="functions">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#functions">#</doc-anchor-trigger>
