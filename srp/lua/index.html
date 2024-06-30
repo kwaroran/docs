@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.773072315446">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.773099538586">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.773072315446" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.773099538586" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.773072315446" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.773099538586" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.773072315446" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.773072315446" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.773099538586" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.773099538586" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -192,43 +192,38 @@
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-lua"><code v-pre class="language-lua">function onStart(triggerId)
-    print(&quot;onStart: &quot; .. triggerId)
-end
-
-function onOutput(triggerId)
-    print(&quot;onOutput: &quot; .. triggerId)
-end
-
-function onInput(triggerId)
-    print(&quot;onInput: &quot; .. triggerId)
-end
-
-function buttonClick(triggerId)
-    print(&quot;buttonClick: &quot; .. triggerId)
+<pre class="language-lua"><code v-pre class="language-lua">function onInput(triggerId)
+    alertNormal(triggerId, &quot;input received!&quot;)
 end</code></pre>
 </doc-codeblock></div>
-<p>The above script will print the triggerId when the corresponding callback function is called, and also print <code v-pre>buttonClick: triggerId</code> when the button <code v-pre>{{button::buttonname::buttonClick}}</code> is clicked.</p>
+<p>The above script will make an alert with the message <code v-pre>input received!</code> when user input is received.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-lua"><code v-pre class="language-lua">listenEdit(&quot;editDisplay&quot;, function(triggerId, data)
     return &quot;editDisplay: &quot; .. data
 end)</code></pre>
 </doc-codeblock></div>
 <p>The above script will append <code v-pre>editDisplay: </code> to the display data.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-lua"><code v-pre class="language-lua">function onButton(triggerId)
+    alertNormal(triggerId, &quot;button clicked!&quot;)
+end</code></pre>
+</doc-codeblock></div>
+<p>The above script will make an alert with the message <code v-pre>button clicked!</code> when the button <code v-pre>{{button::Display::onButton}}</code> is clicked.</p>
 <doc-anchor-target id="functions">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#functions">#</doc-anchor-trigger>
         <span>Functions</span>
     </h2>
 </doc-anchor-target>
-<p>You can use the following functions in the lua script. however, all functions except <code v-pre>setChatVar</code> and <code v-pre>getChatVar</code> do not work on <code v-pre>editDisplay</code> event.</p>
+<p>You can use the following functions in the lua script. Every function must be called with the <code v-pre>triggerId</code> as the first argument for security reasons. you can get the <code v-pre>triggerId</code> from the callback function.</p>
+<p>All functions except <code v-pre>setChatVar</code>, <code v-pre>getChatVar</code>, <code v-pre>setState</code>, <code v-pre>getState</code> would not work in editDisplay event.</p>
 <doc-anchor-target id="setchatvartriggerid-key-value">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#setchatvartriggerid-key-value">#</doc-anchor-trigger>
         <span><code v-pre>setChatVar(triggerId, key, value)</code></span>
     </h3>
 </doc-anchor-target>
-<p>Set a chat variable with the key and value.</p>
+<p>Set a chat variable with the key and value. value must be a string.</p>
 <doc-anchor-target id="getchatvartriggerid-key">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#getchatvartriggerid-key">#</doc-anchor-trigger>
@@ -236,6 +231,20 @@ end)</code></pre>
     </h3>
 </doc-anchor-target>
 <p>Get the value of a chat variable with the key.</p>
+<doc-anchor-target id="setstatetriggerid-key-value">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setstatetriggerid-key-value">#</doc-anchor-trigger>
+        <span><code v-pre>setState(triggerId, key, value)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set a state variable with the key and value. value must be a JSON serializable. (like string, number, boolean, array, object)</p>
+<doc-anchor-target id="getstatetriggerid-key">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getstatetriggerid-key">#</doc-anchor-trigger>
+        <span><code v-pre>getState(triggerId, key)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Get the value of a state variable with the key.</p>
 <doc-anchor-target id="stopchattriggerid">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#stopchattriggerid">#</doc-anchor-trigger>
@@ -349,6 +358,62 @@ to cut only one message, use <code v-pre>removeChat(triggerId, index)</code>.</p
     ...
 }</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="getnametriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getnametriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>getName(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the name of the current character.</p>
+<doc-anchor-target id="setnametriggerid-name">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setnametriggerid-name">#</doc-anchor-trigger>
+        <span><code v-pre>setName(triggerId, name)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the name of the current character.</p>
+<doc-anchor-target id="getdescriptiontriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getdescriptiontriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>getDescription(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the description of the current character.</p>
+<doc-anchor-target id="setdescriptiontriggerid-description">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setdescriptiontriggerid-description">#</doc-anchor-trigger>
+        <span><code v-pre>setDescription(triggerId, description)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the description of the current character.</p>
+<doc-anchor-target id="getcharacterfirstmessagetriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getcharacterfirstmessagetriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>getCharacterFirstMessage(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the first message of the current character.</p>
+<doc-anchor-target id="setcharacterfirstmessagetriggerid-message">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setcharacterfirstmessagetriggerid-message">#</doc-anchor-trigger>
+        <span><code v-pre>setCharacterFirstMessage(triggerId, message)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the first message of the current character.</p>
+<doc-anchor-target id="getbackgroundembeddingtriggerid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getbackgroundembeddingtriggerid">#</doc-anchor-trigger>
+        <span><code v-pre>getBackgroundEmbedding(triggerId)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the background embedding of the current character.</p>
+<doc-anchor-target id="setbackgroundembeddingtriggerid-embedding">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setbackgroundembeddingtriggerid-embedding">#</doc-anchor-trigger>
+        <span><code v-pre>setBackgroundEmbedding(triggerId, embedding)</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Set the background embedding of the current character.</p>
 <doc-anchor-target id="similaritytriggerid-source-value">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#similaritytriggerid-source-value">#</doc-anchor-trigger>
