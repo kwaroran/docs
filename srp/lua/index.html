@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.772969428206">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.773072216702">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.772969428206" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.773072216702" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.772969428206" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.773072216702" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.772969428206" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.772969428206" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.773072216702" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.773072216702" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -183,7 +183,7 @@
 <li><code v-pre>onOutput(triggerId)</code>: This function will be called when AI response is received.</li>
 <li><code v-pre>onInput(triggerId)</code>: This function will be called when user input is received.</li>
 </ul>
-<p>Additonally, for button events (like <code v-pre>{{button::Display::TriggerName}}</code>), it calls the function with same name as TriggerName.</p>
+<p>For button events (like <code v-pre>{{button::Display::TriggerName}}</code>), it calls the function with same name as TriggerName.</p>
 <doc-anchor-target id="example">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
@@ -208,13 +208,14 @@ function buttonClick(triggerId)
 end</code></pre>
 </doc-codeblock></div>
 <p>The above script will print the triggerId when the corresponding callback function is called, and also print <code v-pre>buttonClick: triggerId</code> when the button <code v-pre>{{button::buttonname::buttonClick}}</code> is clicked.</p>
+<p>You can also use <code v-pre>listenEdit(type, callback)</code> to listen for edit events. The type can be <code v-pre>editRequest</code>, <code v-pre>editDisplay</code>, <code v-pre>editInput</code>, and <code v-pre>editOutput</code>. The callback function will be <code v-pre>callback(triggerId, data)</code>.</p>
 <doc-anchor-target id="functions">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#functions">#</doc-anchor-trigger>
         <span>Functions</span>
     </h2>
 </doc-anchor-target>
-<p>You can use the following functions in the lua script:</p>
+<p>You can use the following functions in the lua script. however, all functions except <code v-pre>setChatVar</code> and <code v-pre>getChatVar</code> do not work on <code v-pre>editDisplay</code> event.</p>
 <doc-anchor-target id="setchatvartriggerid-key-value">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#setchatvartriggerid-key-value">#</doc-anchor-trigger>
@@ -342,18 +343,6 @@ to cut only one message, use <code v-pre>removeChat(triggerId, index)</code>.</p
     ...
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="cbstriggerid-data">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#cbstriggerid-data">#</doc-anchor-trigger>
-        <span><code v-pre>cbs(triggerId, data)</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Perform a cbs parse with the data. returns the parsed data.</p>
-<p>example:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-lua"><code v-pre class="language-lua">print(cbs(triggerId, &quot;hello {{user}}!&quot;))</code></pre>
-</doc-codeblock></div>
-<p>Returns: <code v-pre>hello username!</code></p>
 <doc-anchor-target id="similaritytriggerid-source-value">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#similaritytriggerid-source-value">#</doc-anchor-trigger>
