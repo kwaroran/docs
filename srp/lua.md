@@ -44,11 +44,7 @@ The above script will make an alert with the message `button clicked!` when the 
 
 You can use the following functions in the lua script. Every function must be called with the `triggerId` as the first argument for security reasons. you can get the `triggerId` from the callback function.
 
-All functions except `setChatVar`, `getChatVar`, `setState`, `getState`, `log` would not work in editDisplay event.
-
-### `log(message)`
-
-Log the message to the console. this is the only function that does not require the `triggerId`.
+All functions except `setChatVar`, `getChatVar`, `setState`, `getState` would not work in editDisplay event.
 
 ### `setChatVar(triggerId, key, value)`
 
