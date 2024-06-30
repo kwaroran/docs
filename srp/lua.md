@@ -41,7 +41,7 @@ end
 
 The above script will make an alert with the message `button clicked!` when the button `{{button::Display::onButton}}` is clicked.
 
-## Functions
+## Added Functions
 
 You can use the following functions in the lua script. Every function except `log` must be called with the `triggerId` as the first argument for security reasons. you can get the `triggerId` from the callback function.
 
@@ -246,3 +246,4 @@ This is a async function. use `simpleLLM(triggerId, message):await()` to wait fo
 - The lua script is executed in a sandbox environment, so you can't access the file system or network.
 - You can't use external libraries except the included `json.lua`.
 - If error occurs in the lua script, the application will work as if the script is not executed, and the error message will be displayed in the console.
+- The Lua version is based on [Lua 5.4](https://www.lua.org/manual/5.4/)
