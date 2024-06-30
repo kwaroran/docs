@@ -11,6 +11,9 @@ There are three normal callback functions you can use in the lua script:
 
 For button events (like `{{button::Display::TriggerName}}`), it calls the function with same name as TriggerName.
 
+You can also use `listenEdit(type, callback)` to listen for edit events. The type can be `editRequest`, `editDisplay`, `editInput`, and `editOutput`. The callback function will be `callback(triggerId, data)`.
+
+
 ### Example
 
 ```lua
@@ -33,7 +36,13 @@ end
 
 The above script will print the triggerId when the corresponding callback function is called, and also print `buttonClick: triggerId` when the button `{{button::buttonname::buttonClick}}` is clicked.
 
-You can also use `listenEdit(type, callback)` to listen for edit events. The type can be `editRequest`, `editDisplay`, `editInput`, and `editOutput`. The callback function will be `callback(triggerId, data)`.
+```lua
+listenEdit("editDisplay", function(triggerId, data)
+    return "editDisplay: " .. data
+end)
+```
+
+The above script will append `editDisplay: ` to the display data.
 
 ## Functions
 
