@@ -9,7 +9,7 @@ There are three normal callback functions you can use in the lua script:
 - `onOutput(triggerId)`: This function will be called when AI response is received.
 - `onInput(triggerId)`: This function will be called when user input is received.
 
-Additonally, for button events (like `{{button::Display::TriggerName}}`), it calls the function with same name as TriggerName.
+For button events (like `{{button::Display::TriggerName}}`), it calls the function with same name as TriggerName.
 
 ### Example
 
@@ -33,9 +33,11 @@ end
 
 The above script will print the triggerId when the corresponding callback function is called, and also print `buttonClick: triggerId` when the button `{{button::buttonname::buttonClick}}` is clicked.
 
+You can also use `listenEdit(type, callback)` to listen for edit events. The type can be `editRequest`, `editDisplay`, `editInput`, and `editOutput`. The callback function will be `callback(triggerId, data)`.
+
 ## Functions
 
-You can use the following functions in the lua script:
+You can use the following functions in the lua script. however, all functions except `setChatVar` and `getChatVar` do not work on `editDisplay` event.
 
 ### `setChatVar(triggerId, key, value)`
 
@@ -115,17 +117,6 @@ Set the full chat message, with the format of:
     ...
 }
 ```
-
-### `cbs(triggerId, data)`
-
-Perform a cbs parse with the data. returns the parsed data.
-
-example:
-```lua
-print(cbs(triggerId, "hello {{user}}!"))
-```
-
-Returns: `hello username!`
 
 ### `similarity(triggerId, source, value)`
 
