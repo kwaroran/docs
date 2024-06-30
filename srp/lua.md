@@ -26,11 +26,12 @@ The above script will make an alert with the message `input received!` when user
 
 ```lua
 listenEdit("editDisplay", function(triggerId, data)
-    return "editDisplay: " .. data
+    local prefix = getState(triggerId, "prefix") or ""
+    return prefix .. data
 end)
 ```
 
-The above script will append `editDisplay: ` to the display data.
+The above script will append prefix from the state variable to the display message.
 
 ```lua
 function onButton(triggerId)
