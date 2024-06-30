@@ -44,7 +44,11 @@ The above script will make an alert with the message `button clicked!` when the 
 
 You can use the following functions in the lua script. Every function must be called with the `triggerId` as the first argument for security reasons. you can get the `triggerId` from the callback function.
 
-All functions except `setChatVar`, `getChatVar`, `setState`, `getState` would not work in editDisplay event.
+All functions except `setChatVar`, `getChatVar`, `setState`, `getState`, `log` would not work in editDisplay event.
+
+### `log(message)`
+
+Log the message to the console. this is the only function that does not require the `triggerId`.
 
 ### `setChatVar(triggerId, key, value)`
 
@@ -228,3 +232,14 @@ Performs a simple llm request with the message. returns the response.
 both the message and response format is string.
 
 This is a async function. use `simpleLLM(triggerId, message):await()` to wait for the result.
+
+
+## Tips
+
+- If you do not know how to write a lua script, you can refer to the [lua manual](https://www.lua.org/manual/5.4/) or ask for help to the AI chatbot like RisuAI chat playground.
+- We recommend using `log` instead of `alert` or `print` for debugging, as it will not disturb other functions.
+- Every time the trigger event is triggered, the lua script will be executed from the beginning. So if you want to keep some data, you must use chat variables or state variables.
+- [json.lua](https://github.com/rxi/json.lua) is included in the lua environment, so you can use `json.encode` and `json.decode` to serialize and deserialize JSON data.
+- Since the application only offers a small GUI for the lua script, we recommend using an external editor like [VSCode](https://code.visualstudio.com/) for writing the script, and then copy and paste it to the application.
+- The lua script is executed in a sandbox environment, so you can't access the file system or network.
+- You can't use external libraries except the included `json.lua`.
