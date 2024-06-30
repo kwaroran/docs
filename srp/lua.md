@@ -42,9 +42,13 @@ The above script will make an alert with the message `button clicked!` when the 
 
 ## Functions
 
-You can use the following functions in the lua script. Every function must be called with the `triggerId` as the first argument for security reasons. you can get the `triggerId` from the callback function.
+You can use the following functions in the lua script. Every function except `log` must be called with the `triggerId` as the first argument for security reasons. you can get the `triggerId` from the callback function.
 
-All functions except `setChatVar`, `getChatVar`, `setState`, `getState` would not work in editDisplay event.
+All functions except `setChatVar`, `getChatVar`, `setState`, `getState`, `log` would not work in editDisplay event.
+
+### `log(message)`
+
+Log the message to the console. unlike `print`, this outputs as a JSON format, making arrays and objects display correctly in the devtools console.
 
 ### `setChatVar(triggerId, key, value)`
 
@@ -233,7 +237,7 @@ This is a async function. use `simpleLLM(triggerId, message):await()` to wait fo
 ## Tips
 
 - If you do not know how to write a lua script, you can refer to the [lua manual](https://www.lua.org/manual/5.4/) or ask for help to the AI chatbot like RisuAI chat playground.
-- We recommend using `log` instead of `alert` or `print` for debugging, as it will not disturb other functions.
+- We recommend using `log` instead of `alert` or `print` for debugging, as it will not disturb other functions, and displays the data in a more readable format.
 - Every time the trigger event is triggered, the lua script will be executed from the beginning. So if you want to keep some data, you must use chat variables or state variables.
 - [json.lua](https://github.com/rxi/json.lua) is included in the lua environment, so you can use `json.encode` and `json.decode` to serialize and deserialize JSON data.
 - Since the application only offers a small GUI for the lua script, we recommend using an external editor like [VSCode](https://code.visualstudio.com/) for writing the script, and then copy and paste it to the application.
