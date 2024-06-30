@@ -245,3 +245,4 @@ This is a async function. use `simpleLLM(triggerId, message):await()` to wait fo
 - [json.lua](https://github.com/rxi/json.lua) is included in the lua environment, so you can use `json.encode` and `json.decode` to serialize and deserialize JSON data.
 - The lua script is executed in a sandbox environment, so you can't access the file system or network.
 - You can't use external libraries except the included `json.lua`.
+- If error occurs in the lua script, the application will work as if the script is not executed, and the error message will be displayed in the console.
