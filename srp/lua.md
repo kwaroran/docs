@@ -17,24 +17,12 @@ You can also use `listenEdit(type, callback)` to listen for edit events. The typ
 ### Example
 
 ```lua
-function onStart(triggerId)
-    print("onStart: " .. triggerId)
-end
-
-function onOutput(triggerId)
-    print("onOutput: " .. triggerId)
-end
-
 function onInput(triggerId)
-    print("onInput: " .. triggerId)
-end
-
-function buttonClick(triggerId)
-    print("buttonClick: " .. triggerId)
+    alertNormal(triggerId, "input received!")
 end
 ```
 
-The above script will print the triggerId when the corresponding callback function is called, and also print `buttonClick: triggerId` when the button `{{button::buttonname::buttonClick}}` is clicked.
+The above script will make an alert with the message `input received!` when user input is received.
 
 ```lua
 listenEdit("editDisplay", function(triggerId, data)
@@ -44,17 +32,35 @@ end)
 
 The above script will append `editDisplay: ` to the display data.
 
+```lua
+function onButton(triggerId)
+    alertNormal(triggerId, "button clicked!")
+end
+```
+
+The above script will make an alert with the message `button clicked!` when the button `{{button::Display::onButton}}` is clicked.
+
 ## Functions
 
-You can use the following functions in the lua script. however, all functions except `setChatVar` and `getChatVar` do not work on `editDisplay` event.
+You can use the following functions in the lua script. Every function must be called with the `triggerId` as the first argument for security reasons. you can get the `triggerId` from the callback function.
+
+All functions except `setChatVar`, `getChatVar`, `setState`, `getState` would not work in editDisplay event.
 
 ### `setChatVar(triggerId, key, value)`
 
-Set a chat variable with the key and value.
+Set a chat variable with the key and value. value must be a string.
 
 ### `getChatVar(triggerId, key)`
 
 Get the value of a chat variable with the key.
+
+### `setState(triggerId, key, value)`
+
+Set a state variable with the key and value. value must be a JSON serializable. (like string, number, boolean, array, object)
+
+### `getState(triggerId, key)`
+
+Get the value of a state variable with the key.
 
 ### `stopChat(triggerId)`
 
@@ -126,6 +132,38 @@ Set the full chat message, with the format of:
     ...
 }
 ```
+
+### `getName(triggerId)`
+
+Returns the name of the current character.
+
+### `setName(triggerId, name)`
+
+Set the name of the current character.
+
+### `getDescription(triggerId)`
+
+Returns the description of the current character.
+
+### `setDescription(triggerId, description)`
+
+Set the description of the current character.
+
+### `getCharacterFirstMessage(triggerId)`
+
+Returns the first message of the current character.
+
+### `setCharacterFirstMessage(triggerId, message)`
+
+Set the first message of the current character.
+
+### `getBackgroundEmbedding(triggerId)`
+
+Returns the background embedding of the current character.
+
+### `setBackgroundEmbedding(triggerId, embedding)`
+
+Set the background embedding of the current character.
 
 ### `similarity(triggerId, source, value)`
 
