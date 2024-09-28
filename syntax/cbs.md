@@ -234,9 +234,13 @@ This will be replaced with the video element with the source of the additional a
 
 This will be replaced with additional asset path data named `A` of the current character.
 
-### `{{img::A}}`
+### `{{image::A}}`
 
 This will be replaced with the image element with the source of the additional asset path data named `A` of the current character.
+
+### `{{img::A}}`
+
+This will be replaced with the unstyled image element with the source of the additional asset path data named `A` of the current character.
 
 ### `{{assetlist}}`
 
@@ -246,7 +250,11 @@ This will be replaced with the array of names of additional assets of the curren
 
 This will be replaced with the array of names of emotion images of the current character.
 
-## Math/Condition Syntaxes
+### `{{source::A}}`
+
+This will be replaced with the path of the icon. if A is `char`, it will be replaced with the path of the character's icon. if A is `user`, it will be replaced with the path of the user's icon.
+
+## Math Syntaxes
 
 ### `{{? A}}`
 
@@ -291,6 +299,46 @@ This will be replaced with `1` if `A` is equal to `B`, otherwise it will be repl
 
 This will be replaced with `1` if `A` is not equal to `B`, otherwise it will be replaced with `0`. unlike `{{? A}}`, this syntax works for any type of values.
 
+### `{{remaind::A::B}}`
+
+This will be replaced with the remainder of the division of `A` by `B`.
+
+### `{{greater::A::B}}`
+
+This will be replaced with `1` if `A` is greater than `B`, otherwise it will be replaced with `0`.
+
+### `{{greater_equal::A::B}}`
+
+> Alias: {{greaterequal::A::B}}
+
+This will be replaced with `1` if `A` is greater than or equal to `B`, otherwise it will be replaced with `0`.
+
+### `{{less::A::B}}`
+
+This will be replaced with `1` if `A` is less than `B`, otherwise it will be replaced with `0`.
+
+### `{{less_equal::A::B}}`
+
+> Alias: {{lessequal::A::B}}
+
+This will be replaced with `1` if `A` is less than or equal to `B`, otherwise it will be replaced with `0`.
+
+### `{{and::A::B}}`
+
+This will be replaced with `1` if `A` and `B` are both `1`, otherwise it will be replaced with `0`.
+
+### `{{or::A::B}}`
+
+This will be replaced with `1` if `A` or `B` is `1`, otherwise it will be replaced with `0`.
+
+### `{{pow::A::B}}`
+
+This will be replaced with `A` raised to the power of `B`.
+
+### `{{not::A}}`
+
+This will be replaced with `1` if `A` is `0`, otherwise it will be replaced with `0`.
+
 ### `{{floor::A}}`
 
 This will be replaced with the largest integer less than or equal to `A`.
@@ -302,6 +350,36 @@ This will be replaced with the smallest integer greater than or equal to `A`.
 ### `{{abs::A}}`
 
 This will be replaced with the absolute value of `A`.
+
+### `{{round::A}}`
+
+This will be replaced with `A` rounded to the nearest integer.
+
+### `{{min::A::B::C...}}`
+
+This will be replaced with the smallest value among `A`, `B`, `C`, and so on.
+If only one parameter is provided, `A` will be treated as the array of values.
+
+### `{{max::A::B::C...}}`
+
+This will be replaced with the largest value among `A`, `B`, `C`, and so on.
+If only one parameter is provided, `A` will be treated as the array of values.
+
+### `{{sum::A::B::C...}}`
+
+This will be replaced with the sum of `A`, `B`, `C`, and so on.
+If only one parameter is provided, `A` will be treated as the array of values.
+
+### `{{average::A::B::C...}}`
+
+This will be replaced with the average of `A`, `B`, `C`, and so on.
+If only one parameter is provided, `A` will be treated as the array of values.
+
+### `{{fix_number::A::B}}`
+
+This will be replaced with `A` with the number of decimal places fixed to `B`.
+
+## String Syntaxes
 
 ### `{{startswith::A::B}}`
 
@@ -315,10 +393,6 @@ This will be replaced with `1` if `A` ends with `B`, otherwise it will be replac
 
 This will be replaced with `1` if `A` contains `B`, otherwise it will be replaced with `0`.
 
-### `{{prefill_supported}}`
-
-This will be replaced with `1` if the model supports prefilling, otherwise it will be replaced with `0`.
-
 ### `{{lower::A}}`
 
 This will be replaced with `A` converted to lowercase.
@@ -331,18 +405,46 @@ This will be replaced with `A` converted to uppercase.
 
 This will be replaced with `A` with the first letter capitalized.
 
-### `{{round::A}}`
-
-This will be replaced with `A` rounded to the nearest integer.
-
 ### `{{trim::A}}`
 
 This will be replaced with `A` with leading and trailing whitespaces removed.
+
+### `{{unicode_encode::A}}`
+
+This will be replaced with `A` encoded to unicode. the result would be in the format of number
+
+### `{{unicode_decode::A}}`
+
+This will be replaced with `A` decoded from unicode. the input should be in the format of number
+
+## Conditional Syntaxes
+
+### `{{prefill_supported}}`
+
+This will be replaced with `1` if the model supports prefilling, otherwise it will be replaced with `0`.
 
 ### `{{jbtoggled}}`
 
 This will be replaced with the current state of the jailbreak toggle.
 If jailbreak is enabled, it will be replaced with `1`, otherwise it will be replaced with `0`.
+
+### `{{isfirstmsg}}`
+
+This will be replaced with `1` if the message is the first message in the chat, otherwise it will be replaced with `0`.
+
+### `{{all::A::B::C...}}`
+
+This will be replaced with `1` if all of the parameters are `1`, otherwise it will be replaced with `0`.
+If only one parameter is provided, `A` will be treated as the array of values.
+
+### `{{any::A::B::C...}}`
+
+This will be replaced with `1` if any of the parameters are `1`, otherwise it will be replaced with `0`.
+If only one parameter is provided, `A` will be treated as the array of values.
+
+### `{{module_enabled::A}}`
+
+This will be replaced with `1` if the module with namespace `A` is enabled, otherwise it will be replaced with `0`.
 
 ## Variable Syntaxes
 
@@ -360,6 +462,16 @@ If its possible, it is recommended to use trigger script instead of this syntax.
 ### `{{addvar::A::B}}`
 
 This will increment the chat variable `A` by `B` and be replaced with an empty string. for example, if variable `A` is `5` and `{{addvar::A::3}}` is used, the variable `A` will be `8`. `{{addvar::A::B}}` only works when it is in the chat context and it is not the first message.
+
+### `{{settempvar::A::B}}`
+
+This will set the temporary variable `A` to `B` and be replaced with an empty string. `{{settempvar::A::B}}` only works when it is in the chat context and it is not the first message.
+
+Temporary variables are only available in the current context and are not saved when the chat is closed, however, it is performance optimized.
+
+### `{{gettempvar::A}}`
+
+This will be replaced with the value of the temporary variable `A`. If the temporary variable `A` is not defined, it will be replaced with `null`.
 
 ### `{{getglobalvar::A}}`
 
@@ -400,6 +512,10 @@ This will be replaced with array `A` with the first element removed.
 
 This will be replaced with array `A` with `C`, `D`, and so on inserted at index `B`.
 
+### `{{array_assert::A::B::C}}`
+
+This will be replaced with array `A` with element `C` inserted at index `B`.
+
 ### `{{split::A::B}}`
 
 This will be replaced with an array of strings that are separated by `B` in `A`.
@@ -407,6 +523,35 @@ This will be replaced with an array of strings that are separated by `B` in `A`.
 ### `{{join::A::B}}`
 
 This will be replaced with a string that is created by joining the elements of array `A` with `B`.
+
+### `{{filter::A::B}}`
+
+This will be replaced with array `A` with elements filtered. the filter `B` is the option.
+options are:
+- `nonempty`: remove empty strings.
+- `unique`: remove duplicate elements.
+- `all`: perform both `nonempty` and `unique` filter.
+
+### Dictionary Syntaxes
+
+### `{{dict::A=B::C=D...}}`
+
+> Alias: `{{object::A=B::C=D...}}`, `{{o::A=B::C=D...}}`, `{{d::A=B::C=D...}}`
+
+This will be replaced with a dictionary with keys `A`, `C`, and so on and values `B`, `D`, and so on.
+
+### `{{dict_element::A::B}}`
+
+> Alias: `{{object_element::A::B}}`
+
+This will be replaced with the value of the key `B` in dictionary `A`.
+
+### `{{dict_assert::A::B::C}}`
+
+> Alias: `{{object_assert::A::B::C}}`
+
+This will be replaced with dictionary `A` with key `B` and value `C` inserted.
+
 
 ## Utility Syntaxes
 
@@ -481,6 +626,18 @@ This will be replaced with a line break.
 
 This would trim all non-numeric characters except for `.`. This doesn't guarantee that the result is a valid number.
 
+### `{{return::A}}`
+
+If this syntax is provided, the message will be replaced with `A` and the rest of the message will be ignored.
+
+### `{{func::A::B::C...}}`
+
+This will be replaced with the result of the function `A` with arguments `B`, `C`, and so on.
+
+### `{{arg::A}}`
+
+This will be replaced with the argument index `A` of the function if it is called with `{{func::A::B::C...}}`.
+
 ## Block Syntaxes
 
 ### `{{#if A}}`
@@ -514,123 +671,17 @@ will be replaced with
 ```
 chickenpizzahamburger
 ```
-## Unrecommended Syntaxes
-
-Unrecommended syntaxes are deprecated. They are still functional, but they might not work as expected, and might be removed in the future updates.
-
-Please use the recommended syntaxes instead.
-
-### `<user>`
-
-Works the same as `{{user}}`.
-Deprecated due to inconsistency in naming, and syntax conflict. Use `{{user}}` instead.
-
-Dude to syntax conflict, this syntax might not work as expected.
-
-### `<bot>`
-
-> Alias: `<char>`
-
-Works the same as `{{char}}`.
-Deprecated due to inconsistency in naming, and syntax conflict. Use `{{char}}` instead.
-
-Dude to syntax conflict, this syntax might not work as expected.
-
-### `{{main_prompt}}`
-
-> Alias: `{{system_prompt}}`
-
-This will be replaced with the main prompt of the prompt setting.
-Deprecated due to incompiatibility with the prompt template system.
-
-### `{{global_note}}`
-
-> Alias: `{{ujb}}`, `{{system_note}}`
-
-This will be replaced with the global_note of the prompt setting.
-Deprecated due to incompiatibility with the prompt template system.
-
-### `{{personality}}`
-
-> Alias: `{{char_persona}}`
-
-This will be replaced with the character's personality description.
-Deprecated due to deprecation of personality description.
-
-### `{{scenario}}`
-
-This will be replaced with the character's scenario description.
-Deprecated due to deprecation of scenario description.
-
-
-### `{#if A B #}`
-
-This will be replaced with the `content` if `A` is equal to `B`, otherwise it will be replaced with an empty string.
-Deprecated due to introduction of blocked `{{#if A}}` syntax.
-
-Use {{#if A}} {{/if}} block syntax instead.
-
-### `{{remaind::A::B}}`
-
-This will be replaced with the remainder of the division of `A` by `B`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A%B}}` or `{{? A%B}}` instead.
-
-### `{{greater::A::B}}`
-
-This will be replaced with `1` if `A` is greater than `B`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A>B}}` or `{{? A>B}}` instead.
-
-### `{{greater_equal::A::B}}`
-
-> Alias: {{greaterequal::A::B}}
-
-This will be replaced with `1` if `A` is greater than or equal to `B`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A>=B}}` or `{{? A>=B}}` instead.
-
-### `{{less::A::B}}`
-
-This will be replaced with `1` if `A` is less than `B`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A<B}}` or `{{? A<B}}` instead.
-
-### `{{less_equal::A::B}}`
-
-> Alias: {{lessequal::A::B}}
-
-This will be replaced with `1` if `A` is less than or equal to `B`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A<=B}}` or `{{? A<=B}}` instead.
-
-### `{{and::A::B}}`
-
-This will be replaced with `1` if `A` and `B` are both `1`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A&&B}}` or `{{? A&&B}}` instead.
-
-### `{{or::A::B}}`
-
-This will be replaced with `1` if `A` or `B` is `1`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A||B}}` or `{{? A||B}}` instead.
-
-### `{{pow::A::B}}`
-
-This will be replaced with `A` raised to the power of `B`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::A^B}}` or `{{? A^B}}` instead.
-
-### `{{not::A}}`
-
-This will be replaced with `1` if `A` is `0`, otherwise it will be replaced with `0`.
-
-Deprecated due to upgrade of `{{? A}}` syntax. use `{{calc::!A}}` or `{{? !A}}` instead.
-
 
 <style>
     h2, h3 {
         margin-top: 4rem !important;
     }
 </style>
+
+### `{{#func A}}`
+
+This will be replaced with the result of the function `A`. The function can be called with `{{func::A::B::C...}}`.
+
+### `{{#pure_display}}`
+
+This will be replaced with the `content` without any formatting. This is useful for displaying raw text.
