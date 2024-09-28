@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.773103937578">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.780841435844">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.5.0">
+    <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
     <title>Curly Braced Syntaxes</title>
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.773103937578" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.780841435844" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.773103937578" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.773103937578" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.780841435844" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.780841435844" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -536,13 +536,20 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with additional asset path data named <code v-pre>A</code> of the current character.</p>
+<doc-anchor-target id="imagea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#imagea">#</doc-anchor-trigger>
+        <span><code v-pre>{{image::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the image element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
 <doc-anchor-target id="imga">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#imga">#</doc-anchor-trigger>
         <span><code v-pre>{{img::A}}</code></span>
     </h3>
 </doc-anchor-target>
-<p>This will be replaced with the image element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
+<p>This will be replaced with the unstyled image element with the source of the additional asset path data named <code v-pre>A</code> of the current character.</p>
 <doc-anchor-target id="assetlist">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#assetlist">#</doc-anchor-trigger>
@@ -557,10 +564,17 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with the array of names of emotion images of the current character.</p>
-<doc-anchor-target id="mathcondition-syntaxes">
+<doc-anchor-target id="sourcea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sourcea">#</doc-anchor-trigger>
+        <span><code v-pre>{{source::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the path of the icon. if A is <code v-pre>char</code>, it will be replaced with the path of the character&#x27;s icon. if A is <code v-pre>user</code>, it will be replaced with the path of the user&#x27;s icon.</p>
+<doc-anchor-target id="math-syntaxes">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#mathcondition-syntaxes">#</doc-anchor-trigger>
-        <span>Math/Condition Syntaxes</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#math-syntaxes">#</doc-anchor-trigger>
+        <span>Math Syntaxes</span>
     </h2>
 </doc-anchor-target>
 <doc-anchor-target id="-a">
@@ -618,6 +632,75 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
 <p>Alias: {{notequal::A::B}}</p>
 </blockquote>
 <p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is not equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>. unlike <code v-pre>{{? A}}</code>, this syntax works for any type of values.</p>
+<doc-anchor-target id="remaindab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#remaindab">#</doc-anchor-trigger>
+        <span><code v-pre>{{remaind::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the remainder of the division of <code v-pre>A</code> by <code v-pre>B</code>.</p>
+<doc-anchor-target id="greaterab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#greaterab">#</doc-anchor-trigger>
+        <span><code v-pre>{{greater::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is greater than <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="greater_equalab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#greater_equalab">#</doc-anchor-trigger>
+        <span><code v-pre>{{greater_equal::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: {{greaterequal::A::B}}</p>
+</blockquote>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is greater than or equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="lessab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lessab">#</doc-anchor-trigger>
+        <span><code v-pre>{{less::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is less than <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="less_equalab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#less_equalab">#</doc-anchor-trigger>
+        <span><code v-pre>{{less_equal::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: {{lessequal::A::B}}</p>
+</blockquote>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is less than or equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="andab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#andab">#</doc-anchor-trigger>
+        <span><code v-pre>{{and::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> and <code v-pre>B</code> are both <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="orab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#orab">#</doc-anchor-trigger>
+        <span><code v-pre>{{or::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> or <code v-pre>B</code> is <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="powab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#powab">#</doc-anchor-trigger>
+        <span><code v-pre>{{pow::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> raised to the power of <code v-pre>B</code>.</p>
+<doc-anchor-target id="nota">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nota">#</doc-anchor-trigger>
+        <span><code v-pre>{{not::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is <code v-pre>0</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
 <doc-anchor-target id="floora">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#floora">#</doc-anchor-trigger>
@@ -639,6 +722,58 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with the absolute value of <code v-pre>A</code>.</p>
+<doc-anchor-target id="rounda">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rounda">#</doc-anchor-trigger>
+        <span><code v-pre>{{round::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> rounded to the nearest integer.</p>
+<doc-anchor-target id="minabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#minabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{min::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the smallest value among <code v-pre>A</code>, <code v-pre>B</code>, <code v-pre>C</code>, and so on.
+If only one parameter is provided, <code v-pre>A</code> will be treated as the array of values.</p>
+<doc-anchor-target id="maxabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#maxabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{max::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the largest value among <code v-pre>A</code>, <code v-pre>B</code>, <code v-pre>C</code>, and so on.
+If only one parameter is provided, <code v-pre>A</code> will be treated as the array of values.</p>
+<doc-anchor-target id="sumabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sumabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{sum::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the sum of <code v-pre>A</code>, <code v-pre>B</code>, <code v-pre>C</code>, and so on.
+If only one parameter is provided, <code v-pre>A</code> will be treated as the array of values.</p>
+<doc-anchor-target id="averageabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#averageabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{average::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the average of <code v-pre>A</code>, <code v-pre>B</code>, <code v-pre>C</code>, and so on.
+If only one parameter is provided, <code v-pre>A</code> will be treated as the array of values.</p>
+<doc-anchor-target id="fix_numberab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fix_numberab">#</doc-anchor-trigger>
+        <span><code v-pre>{{fix_number::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> with the number of decimal places fixed to <code v-pre>B</code>.</p>
+<doc-anchor-target id="string-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#string-syntaxes">#</doc-anchor-trigger>
+        <span>String Syntaxes</span>
+    </h2>
+</doc-anchor-target>
 <doc-anchor-target id="startswithab">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#startswithab">#</doc-anchor-trigger>
@@ -660,13 +795,6 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> contains <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<doc-anchor-target id="prefill_supported">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#prefill_supported">#</doc-anchor-trigger>
-        <span><code v-pre>{{prefill_supported}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>1</code> if the model supports prefilling, otherwise it will be replaced with <code v-pre>0</code>.</p>
 <doc-anchor-target id="lowera">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#lowera">#</doc-anchor-trigger>
@@ -688,13 +816,6 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with <code v-pre>A</code> with the first letter capitalized.</p>
-<doc-anchor-target id="rounda">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#rounda">#</doc-anchor-trigger>
-        <span><code v-pre>{{round::A}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>A</code> rounded to the nearest integer.</p>
 <doc-anchor-target id="trima">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#trima">#</doc-anchor-trigger>
@@ -702,6 +823,33 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with <code v-pre>A</code> with leading and trailing whitespaces removed.</p>
+<doc-anchor-target id="unicode_encodea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#unicode_encodea">#</doc-anchor-trigger>
+        <span><code v-pre>{{unicode_encode::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> encoded to unicode. the result would be in the format of number</p>
+<doc-anchor-target id="unicode_decodea">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#unicode_decodea">#</doc-anchor-trigger>
+        <span><code v-pre>{{unicode_decode::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>A</code> decoded from unicode. the input should be in the format of number</p>
+<doc-anchor-target id="conditional-syntaxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#conditional-syntaxes">#</doc-anchor-trigger>
+        <span>Conditional Syntaxes</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="prefill_supported">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#prefill_supported">#</doc-anchor-trigger>
+        <span><code v-pre>{{prefill_supported}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if the model supports prefilling, otherwise it will be replaced with <code v-pre>0</code>.</p>
 <doc-anchor-target id="jbtoggled">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#jbtoggled">#</doc-anchor-trigger>
@@ -710,6 +858,36 @@ The returned time format would be <code v-pre>HH:MM:SS</code> format.</p>
 </doc-anchor-target>
 <p>This will be replaced with the current state of the jailbreak toggle.
 If jailbreak is enabled, it will be replaced with <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="isfirstmsg">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#isfirstmsg">#</doc-anchor-trigger>
+        <span><code v-pre>{{isfirstmsg}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if the message is the first message in the chat, otherwise it will be replaced with <code v-pre>0</code>.</p>
+<doc-anchor-target id="allabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#allabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{all::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if all of the parameters are <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.
+If only one parameter is provided, <code v-pre>A</code> will be treated as the array of values.</p>
+<doc-anchor-target id="anyabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#anyabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{any::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if any of the parameters are <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.
+If only one parameter is provided, <code v-pre>A</code> will be treated as the array of values.</p>
+<doc-anchor-target id="module_enableda">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#module_enableda">#</doc-anchor-trigger>
+        <span><code v-pre>{{module_enabled::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with <code v-pre>1</code> if the module with namespace <code v-pre>A</code> is enabled, otherwise it will be replaced with <code v-pre>0</code>.</p>
 <doc-anchor-target id="variable-syntaxes">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#variable-syntaxes">#</doc-anchor-trigger>
@@ -738,6 +916,21 @@ If jailbreak is enabled, it will be replaced with <code v-pre>1</code>, otherwis
     </h3>
 </doc-anchor-target>
 <p>This will increment the chat variable <code v-pre>A</code> by <code v-pre>B</code> and be replaced with an empty string. for example, if variable <code v-pre>A</code> is <code v-pre>5</code> and <code v-pre>{{addvar::A::3}}</code> is used, the variable <code v-pre>A</code> will be <code v-pre>8</code>. <code v-pre>{{addvar::A::B}}</code> only works when it is in the chat context and it is not the first message.</p>
+<doc-anchor-target id="settempvarab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#settempvarab">#</doc-anchor-trigger>
+        <span><code v-pre>{{settempvar::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will set the temporary variable <code v-pre>A</code> to <code v-pre>B</code> and be replaced with an empty string. <code v-pre>{{settempvar::A::B}}</code> only works when it is in the chat context and it is not the first message.</p>
+<p>Temporary variables are only available in the current context and are not saved when the chat is closed, however, it is performance optimized.</p>
+<doc-anchor-target id="gettempvara">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gettempvara">#</doc-anchor-trigger>
+        <span><code v-pre>{{gettempvar::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the value of the temporary variable <code v-pre>A</code>. If the temporary variable <code v-pre>A</code> is not defined, it will be replaced with <code v-pre>null</code>.</p>
 <doc-anchor-target id="getglobalvara">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#getglobalvara">#</doc-anchor-trigger>
@@ -805,6 +998,13 @@ index starts from 0. if the index is out of range, it will be replaced with <cod
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with array <code v-pre>A</code> with <code v-pre>C</code>, <code v-pre>D</code>, and so on inserted at index <code v-pre>B</code>.</p>
+<doc-anchor-target id="array_assertabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#array_assertabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{array_assert::A::B::C}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with array <code v-pre>A</code> with element <code v-pre>C</code> inserted at index <code v-pre>B</code>.</p>
 <doc-anchor-target id="splitab">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#splitab">#</doc-anchor-trigger>
@@ -819,6 +1019,55 @@ index starts from 0. if the index is out of range, it will be replaced with <cod
     </h3>
 </doc-anchor-target>
 <p>This will be replaced with a string that is created by joining the elements of array <code v-pre>A</code> with <code v-pre>B</code>.</p>
+<doc-anchor-target id="filterab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#filterab">#</doc-anchor-trigger>
+        <span><code v-pre>{{filter::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with array <code v-pre>A</code> with elements filtered. the filter <code v-pre>B</code> is the option.
+options are:</p>
+<ul>
+<li><code v-pre>nonempty</code>: remove empty strings.</li>
+<li><code v-pre>unique</code>: remove duplicate elements.</li>
+<li><code v-pre>all</code>: perform both <code v-pre>nonempty</code> and <code v-pre>unique</code> filter.</li>
+</ul>
+<doc-anchor-target id="dictionary-syntaxes">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dictionary-syntaxes">#</doc-anchor-trigger>
+        <span>Dictionary Syntaxes</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="dictabcd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dictabcd">#</doc-anchor-trigger>
+        <span><code v-pre>{{dict::A=B::C=D...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{object::A=B::C=D...}}</code>, <code v-pre>{{o::A=B::C=D...}}</code>, <code v-pre>{{d::A=B::C=D...}}</code></p>
+</blockquote>
+<p>This will be replaced with a dictionary with keys <code v-pre>A</code>, <code v-pre>C</code>, and so on and values <code v-pre>B</code>, <code v-pre>D</code>, and so on.</p>
+<doc-anchor-target id="dict_elementab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dict_elementab">#</doc-anchor-trigger>
+        <span><code v-pre>{{dict_element::A::B}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{object_element::A::B}}</code></p>
+</blockquote>
+<p>This will be replaced with the value of the key <code v-pre>B</code> in dictionary <code v-pre>A</code>.</p>
+<doc-anchor-target id="dict_assertabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dict_assertabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{dict_assert::A::B::C}}</code></span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>Alias: <code v-pre>{{object_assert::A::B::C}}</code></p>
+</blockquote>
+<p>This will be replaced with dictionary <code v-pre>A</code> with key <code v-pre>B</code> and value <code v-pre>C</code> inserted.</p>
 <doc-anchor-target id="utility-syntaxes">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#utility-syntaxes">#</doc-anchor-trigger>
@@ -943,6 +1192,27 @@ If no parameters are provided, it will be replaced with random number between 0 
     </h3>
 </doc-anchor-target>
 <p>This would trim all non-numeric characters except for <code v-pre>.</code>. This doesn&#x27;t guarantee that the result is a valid number.</p>
+<doc-anchor-target id="returna">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#returna">#</doc-anchor-trigger>
+        <span><code v-pre>{{return::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>If this syntax is provided, the message will be replaced with <code v-pre>A</code> and the rest of the message will be ignored.</p>
+<doc-anchor-target id="funcabc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#funcabc">#</doc-anchor-trigger>
+        <span><code v-pre>{{func::A::B::C...}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the result of the function <code v-pre>A</code> with arguments <code v-pre>B</code>, <code v-pre>C</code>, and so on.</p>
+<doc-anchor-target id="arga">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#arga">#</doc-anchor-trigger>
+        <span><code v-pre>{{arg::A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the argument index <code v-pre>A</code> of the function if it is called with <code v-pre>{{func::A::B::C...}}</code>.</p>
 <doc-anchor-target id="block-syntaxes">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#block-syntaxes">#</doc-anchor-trigger>
@@ -986,168 +1256,25 @@ Hello Alice!
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none"><code v-pre class="language-none">chickenpizzahamburger</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="unrecommended-syntaxes">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#unrecommended-syntaxes">#</doc-anchor-trigger>
-        <span>Unrecommended Syntaxes</span>
-    </h2>
-</doc-anchor-target>
-<p>Unrecommended syntaxes are deprecated. They are still functional, but they might not work as expected, and might be removed in the future updates.</p>
-<p>Please use the recommended syntaxes instead.</p>
-<doc-anchor-target id="user-1">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#user-1">#</doc-anchor-trigger>
-        <span><code v-pre>&lt;user&gt;</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Works the same as <code v-pre>{{user}}</code>.
-Deprecated due to inconsistency in naming, and syntax conflict. Use <code v-pre>{{user}}</code> instead.</p>
-<p>Dude to syntax conflict, this syntax might not work as expected.</p>
-<doc-anchor-target id="bot">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#bot">#</doc-anchor-trigger>
-        <span><code v-pre>&lt;bot&gt;</code></span>
-    </h3>
-</doc-anchor-target>
-<blockquote>
-<p>Alias: <code v-pre>&lt;char&gt;</code></p>
-</blockquote>
-<p>Works the same as <code v-pre>{{char}}</code>.
-Deprecated due to inconsistency in naming, and syntax conflict. Use <code v-pre>{{char}}</code> instead.</p>
-<p>Dude to syntax conflict, this syntax might not work as expected.</p>
-<doc-anchor-target id="main_prompt">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#main_prompt">#</doc-anchor-trigger>
-        <span><code v-pre>{{main_prompt}}</code></span>
-    </h3>
-</doc-anchor-target>
-<blockquote>
-<p>Alias: <code v-pre>{{system_prompt}}</code></p>
-</blockquote>
-<p>This will be replaced with the main prompt of the prompt setting.
-Deprecated due to incompiatibility with the prompt template system.</p>
-<doc-anchor-target id="global_note">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#global_note">#</doc-anchor-trigger>
-        <span><code v-pre>{{global_note}}</code></span>
-    </h3>
-</doc-anchor-target>
-<blockquote>
-<p>Alias: <code v-pre>{{ujb}}</code>, <code v-pre>{{system_note}}</code></p>
-</blockquote>
-<p>This will be replaced with the global_note of the prompt setting.
-Deprecated due to incompiatibility with the prompt template system.</p>
-<doc-anchor-target id="personality">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#personality">#</doc-anchor-trigger>
-        <span><code v-pre>{{personality}}</code></span>
-    </h3>
-</doc-anchor-target>
-<blockquote>
-<p>Alias: <code v-pre>{{char_persona}}</code></p>
-</blockquote>
-<p>This will be replaced with the character&#x27;s personality description.
-Deprecated due to deprecation of personality description.</p>
-<doc-anchor-target id="scenario">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#scenario">#</doc-anchor-trigger>
-        <span><code v-pre>{{scenario}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with the character&#x27;s scenario description.
-Deprecated due to deprecation of scenario description.</p>
-<doc-anchor-target id="if-a-b-">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#if-a-b-">#</doc-anchor-trigger>
-        <span><code v-pre>{#if A B #}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with the <code v-pre>content</code> if <code v-pre>A</code> is equal to <code v-pre>B</code>, otherwise it will be replaced with an empty string.
-Deprecated due to introduction of blocked <code v-pre>{{#if A}}</code> syntax.</p>
-<p>Use {{#if A}} {{/if}} block syntax instead.</p>
-<doc-anchor-target id="remaindab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#remaindab">#</doc-anchor-trigger>
-        <span><code v-pre>{{remaind::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with the remainder of the division of <code v-pre>A</code> by <code v-pre>B</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A%B}}</code> or <code v-pre>{{? A%B}}</code> instead.</p>
-<doc-anchor-target id="greaterab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#greaterab">#</doc-anchor-trigger>
-        <span><code v-pre>{{greater::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is greater than <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&gt;B}}</code> or <code v-pre>{{? A&gt;B}}</code> instead.</p>
-<doc-anchor-target id="greater_equalab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#greater_equalab">#</doc-anchor-trigger>
-        <span><code v-pre>{{greater_equal::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<blockquote>
-<p>Alias: {{greaterequal::A::B}}</p>
-</blockquote>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is greater than or equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&gt;=B}}</code> or <code v-pre>{{? A&gt;=B}}</code> instead.</p>
-<doc-anchor-target id="lessab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#lessab">#</doc-anchor-trigger>
-        <span><code v-pre>{{less::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is less than <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&lt;B}}</code> or <code v-pre>{{? A&lt;B}}</code> instead.</p>
-<doc-anchor-target id="less_equalab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#less_equalab">#</doc-anchor-trigger>
-        <span><code v-pre>{{less_equal::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<blockquote>
-<p>Alias: {{lessequal::A::B}}</p>
-</blockquote>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is less than or equal to <code v-pre>B</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&lt;=B}}</code> or <code v-pre>{{? A&lt;=B}}</code> instead.</p>
-<doc-anchor-target id="andab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#andab">#</doc-anchor-trigger>
-        <span><code v-pre>{{and::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> and <code v-pre>B</code> are both <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A&amp;&amp;B}}</code> or <code v-pre>{{? A&amp;&amp;B}}</code> instead.</p>
-<doc-anchor-target id="orab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#orab">#</doc-anchor-trigger>
-        <span><code v-pre>{{or::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> or <code v-pre>B</code> is <code v-pre>1</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A||B}}</code> or <code v-pre>{{? A||B}}</code> instead.</p>
-<doc-anchor-target id="powab">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#powab">#</doc-anchor-trigger>
-        <span><code v-pre>{{pow::A::B}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>A</code> raised to the power of <code v-pre>B</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::A^B}}</code> or <code v-pre>{{? A^B}}</code> instead.</p>
-<doc-anchor-target id="nota">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#nota">#</doc-anchor-trigger>
-        <span><code v-pre>{{not::A}}</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This will be replaced with <code v-pre>1</code> if <code v-pre>A</code> is <code v-pre>0</code>, otherwise it will be replaced with <code v-pre>0</code>.</p>
-<p>Deprecated due to upgrade of <code v-pre>{{? A}}</code> syntax. use <code v-pre>{{calc::!A}}</code> or <code v-pre>{{? !A}}</code> instead.</p>
 <style>
     h2, h3 {
         margin-top: 4rem !important;
     }
 </style>
+<doc-anchor-target id="func-a">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#func-a">#</doc-anchor-trigger>
+        <span><code v-pre>{{#func A}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the result of the function <code v-pre>A</code>. The function can be called with <code v-pre>{{func::A::B::C...}}</code>.</p>
+<doc-anchor-target id="pure_display">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pure_display">#</doc-anchor-trigger>
+        <span><code v-pre>{{#pure_display}}</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This will be replaced with the <code v-pre>content</code> without any formatting. This is useful for displaying raw text.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -1167,10 +1294,10 @@ Deprecated due to introduction of blocked <code v-pre>{{#if A}}</code> syntax.</
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../syntax/html/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../syntax/markdown/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">HTML in Risu​AI</span>
+                                                <span class="block mt-1">Markdown</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
