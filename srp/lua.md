@@ -178,7 +178,7 @@ Perform a similarity sort between the source and value.
 source must be a array of strings, and value must be a string.
 return a array of index sorted by similarity.
 
-This is a async function. use `similarity(triggerId, source, value):await()` to wait for the result.
+This is an async function. Use `similarity(triggerId, source, value):await()` to wait for the result.
 
 ### `generateImage(triggerId, prompt, negative)`
 
@@ -186,53 +186,58 @@ This is a async function. use `similarity(triggerId, source, value):await()` to 
 
 Generate an image with the prompt and negative. returns the asset CBS (like `{{asset::assetId}}`).
 
-This is a async function. use `generateImage(triggerId, prompt, negative):await()` to wait for the result.
+This is an async function. Use `generateImage(triggerId, prompt, negative):await()` to wait for the result.
 
 ### `LLM(triggerId, data)`
 
 > This function requires low level access.
 
-Performs a llm request with the data. returns the response.
+Performs a LLM request with a message data. Returns the response.
 
-data must be a message format, with the format of:
+The message data must be a table of messages in the format of:
+
 ```lua
 {
     -- the message role, can be "system", "assistant", "user"
     {
         role = "system",
-        data = "system message"
+        content = "system message"
     },
     {
         role = "assistant",
-        data = "char message"
+        content = "char message"
     },
     {
         role = "user",
-        data = "user message"
+        content = "user message"
     }
     ...
 }
 ```
 
-the response format is:
+The response format is:
 
 ```lua
 {
     success = true,
-    message = "response message",
+    result = "response message",
 }
 ```
-
-This is a async function. use `LLM(triggerId, data):await()` to wait for the result.
 
 ### `simpleLLM(triggerId, message)`
 
 > This function requires low level access.
 
-Performs a simple llm request with the message. returns the response.
-both the message and response format is string.
+Performs a LLM request with a string prompt. Returns the response.
 
-This is a async function. use `simpleLLM(triggerId, message):await()` to wait for the result.
+The response format is:
+
+```lua
+{
+    success = true,
+    result = "response message",
+}
+```
 
 
 ## Tips
