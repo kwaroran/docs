@@ -1,2 +1,4 @@
 retype.manifest
 prerender/
+.DS_Store
+*.code-workspace
