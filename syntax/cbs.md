@@ -10,7 +10,7 @@ The syntaxes are case-insensitive, so `{{user}}`, `{{User}}`, and `{{USER}}` are
 Some of the syntaxes require parameters, which are separated by `::` (two colons).
 
 Some of the syntaxes require arrays as parameters. use `{{array::A::B::C...}}` syntax to create an array.
-Some of the syntaxes are block syntaxes (like `{{#if A}}`), which are started with `{{#NAME A}}` and ended with `{{/NAME}}`. The block syntaxes can be nested, and starts with `#`. it can also be closed with `{{/}}` instead of `{{/NAME}}`. block syntaxes's content's indentation and whitespace would be trimmed, unless for some syntaxes like `{{#if-pure A}}` which would keep the indentation and whitespace.
+Some of the syntaxes are block syntaxes (like `{{#if A}}`), which are started with `{{#NAME A}}` and ended with `{{/NAME}}`. The block syntaxes can be nested, and starts with `#`. it can also be closed with `{{/}}` instead of `{{/NAME}}`. block syntaxes's content's indentation and whitespace would be trimmed, unless for some syntaxes like `{{#if_pure A}}` which would keep the indentation and whitespace.
 
 ## Data Syntaxes
 
@@ -20,9 +20,10 @@ This will be replaced with the personas's name.
 
 ### `{{char}}`
 
+> Alias: `{{bot}}`
+
 This will be replaced with the character's name.
 If you are chatting in a group chat, if the speaker is user, this will be replaced with group chat name. if the speaker is character, this will be replaced with the speaker's name.
-
 
 ### `{{description}}`
 
@@ -36,7 +37,6 @@ This will be replaced with the character's description.
 
 This will be replaced with an array of example dialogue of the character.
 
-
 ### `{{persona}}`
 
 > Alias: `{{user_persona}}`
@@ -48,6 +48,12 @@ This will be replaced with the persona's description.
 > Alias: `{{world_info}}`
 
 This will be replaced with array of lorebook entries.
+
+### `{{authornote}}`
+
+> Alias: `{{author_note}}`
+
+This will be replaced with [Author's Note](/characterconfig/basic.md) included in the current chat prompt. This is also known as memory or UJB.
 
 ### `{{history}}`
 
@@ -74,9 +80,9 @@ This will be replaced with the current auxiliary model id of the client.
 This will be replaced with the current role of the message sender.
 If the `{{role}}` is used in non-chat context, it will be replaced with `role` string.
 
-### `{{maxprompt}}`
+### `{{maxcontext}}`
 
-This will be replaced with the maxinum tokens setting of the client.
+This will be replaced with the maximum context length setting of the client.
 
 ### `{{lastmessage}}`
 
@@ -128,11 +134,9 @@ This will be replaced with the array of messages of the character in the chat lo
 
 ### `{{time}}`
 
-This will be replaced with the current time, in the format `HH:MM:SS` in client's timezone.
+This will be replaced with the current time in the client's timezone. The returned value is not zero-padded, so it may look like `9:5:3`.
 
 ### `{{time::A}}`
-
->Alias: `{{datetimeformat:A}}`, `{{date::A}}`
 
 This will be replaced with the current time, in format of `A` in client's timezone.
 
@@ -154,13 +158,17 @@ for example, `{{time::YYYY-MM-DD HH:mm:ss}}` will be replaced with the current t
 
 ### `{{time::A::B}}`
 
->Alias: `{{datetimeformat::A::B}}`, `{{date::A::B}}`
+Same as `{{time::A}}`, but the time is based on timestamp `B` in milliseconds instead of the current time.
 
-Same as `{{time::A}}`, but the time would be in the unix timestamp `B` instead of the current time.
+### `{{unixtime}}`
+
+This will be replaced with the current Unix timestamp in seconds.
 
 ### `{{date}}`
 
-This will be replaced with the current date, in the format `YYYY-MM-DD` in client's timezone.
+> Alias: `{{datetimeformat}}`
+
+This will be replaced with the current date, in the format `YYYY-M-D` in client's timezone.
 
 ### `{{isotime}}`
 
@@ -246,6 +254,16 @@ This will be replaced with the unstyled image element with the source of the add
 
 This will be replaced with the array of names of additional assets of the current character.
 
+### `{{chardisplayasset}}`
+
+This will be replaced with a JSON array of asset names inserted into the prompt for character display assets. Unlike `{{assetlist}}`, this reflects the New Image Handling setting and excludes assets disabled for prompt insertion.
+
+### `{{moduleassetlist::A}}`
+
+> Alias: `{{module_assetlist::A}}`
+
+This will be replaced with an array of asset names from module namespace `A`. If the module is not found, this will be replaced with an empty string.
+
 ### `{{emotionlist}}`
 
 This will be replaced with the array of names of emotion images of the current character.
@@ -253,6 +271,18 @@ This will be replaced with the array of names of emotion images of the current c
 ### `{{source::A}}`
 
 This will be replaced with the path of the icon. if A is `char`, it will be replaced with the path of the character's icon. if A is `user`, it will be replaced with the path of the user's icon.
+
+### `{{inlay::A}}`
+
+This displays unstyled inlay asset `A`. The asset is not inserted into the model request.
+
+### `{{inlayed::A}}`
+
+This displays styled inlay asset `A`. The asset is not inserted into the model request.
+
+### `{{inlayeddata::A}}`
+
+This displays styled inlay asset `A`. The asset is inserted into the model request.
 
 ## Math Syntaxes
 
@@ -379,6 +409,22 @@ If only one parameter is provided, `A` will be treated as the array of values.
 
 This will be replaced with `A` with the number of decimal places fixed to `B`.
 
+### `{{randint::A::B}}`
+
+This will be replaced with a random integer between `A` and `B`, inclusive. If `A` or `B` is not a valid number, this will be replaced with `NaN`.
+
+### `{{dice::A}}`
+
+This will roll dice using standard dice notation. For example, `{{dice::2d6}}` rolls two six-sided dice and returns the sum.
+
+### `{{fromhex::A}}`
+
+This will be replaced with hexadecimal value `A` converted to a decimal number.
+
+### `{{tohex::A}}`
+
+This will be replaced with decimal value `A` converted to a hexadecimal string.
+
 ## String Syntaxes
 
 ### `{{startswith::A::B}}`
@@ -417,6 +463,60 @@ This will be replaced with `A` encoded to unicode. the result would be in the fo
 
 This will be replaced with `A` decoded from unicode. the input should be in the format of number
 
+### `{{unicodedecodefromhex::A}}`
+
+> Alias: `{{u::A}}`
+
+This will be replaced with the character represented by hexadecimal Unicode code `A`.
+
+### `{{unicodeencodefromhex::A}}`
+
+> Alias: `{{ue::A}}`
+
+This works the same as `{{u::A}}`.
+
+### `{{xorencrypt::A}}`
+
+> Alias: `{{xor::A}}`, `{{xorencode::A}}`, `{{xore::A}}`
+
+This will encrypt `A` with a simple XOR cipher and encode the result as base64.
+
+### `{{xordecrypt::A}}`
+
+> Alias: `{{xordecode::A}}`, `{{xord::A}}`
+
+This will decrypt a base64-encoded value created by `{{xor::A}}`.
+
+### `{{crypt::A}}`
+
+> Alias: `{{crypto::A}}`, `{{caesar::A}}`, `{{encrypt::A}}`, `{{decrypt::A}}`
+
+This will apply a Caesar cipher to `A`. With no second argument, it uses the default shift value.
+
+### `{{crypt::A::B}}`
+
+> Alias: `{{crypto::A::B}}`, `{{caesar::A::B}}`, `{{encrypt::A::B}}`, `{{decrypt::A::B}}`
+
+This will apply a Caesar cipher to `A` using shift value `B`.
+
+Example:
+```
+{{crypt::Hello, World!}}
+{{crypt::聈聥聬聬聯耬耠聗聯聲聬聤耡}}
+
+{{crypt::Hello, World!::3}}
+{{crypt::Khoor/#Zruog$::-3}}
+```
+
+will be replaced with
+```
+聈聥聬聬聯耬耠聗聯聲聬聤耡
+Hello, World!
+
+Khoor/#Zruog$
+Hello, World!
+```
+
 ## Conditional Syntaxes
 
 ### `{{prefill_supported}}`
@@ -446,8 +546,11 @@ If only one parameter is provided, `A` will be treated as the array of values.
 
 This will be replaced with `1` if the module with namespace `A` is enabled, otherwise it will be replaced with `0`.
 
-## Variable Syntaxes
+### `{{iserror::A}}`
 
+This will be replaced with `1` if `A` starts with `error:`, otherwise it will be replaced with `0`. The check is case-insensitive.
+
+## Variable Syntaxes
 
 ### `{{getvar::A}}`
 
@@ -483,7 +586,7 @@ This will be replaced with the value of the global variable `A`. If the global v
 
 This will be replaced with an array of `B`, `C`, and so on. This can be used to create an array from multiple parameters.
 
-Currently array uses `§` as separator, but this might change in the future. so it is recommended to use this syntax instead of using `§` directly.
+For compatibility, strings that are not JSON arrays may be split by `§`, but using `§` directly is not recommended.
 
 ### `{{array_length::A}}`
 
@@ -508,9 +611,9 @@ This will be replaced with array `A` with the last element removed.
 
 This will be replaced with array `A` with the first element removed.
 
-### `{{array_splice::A::B::C::D...}}`
+### `{{array_splice::A::B::C::D}}`
 
-This will be replaced with array `A` with `C`, `D`, and so on inserted at index `B`.
+This will be replaced with array `A` after removing `C` elements starting at index `B` and inserting element `D` at that position.
 
 ### `{{array_assert::A::B::C}}`
 
@@ -552,16 +655,15 @@ This will be replaced with the value of the key `B` in dictionary `A`.
 
 This will be replaced with dictionary `A` with key `B` and value `C` inserted.
 
-
 ## Utility Syntaxes
 
 ### `{{slot}}`
 
-If it is used in prompt template, pipeline or translator prompt, it will be replaced to original slot content. otherwise, it will not be replaced.
+It is replaced only in specific contexts such as prompt templates, group templates, translator prompts, summarization prompts, image prompts, and some trigger/lore operations. In normal chat parsing, it is left unchanged.
 
 ### `{{slot::A}}`
 
-If it is used in `{{#each C D}}` block, and if `D` is same as `A`, it will be replaced to the current element of the array. otherwise, it will not be replaced.
+Inside a `{{#each C as A}}` block, this is replaced with the current element of array `C`. If the name does not match the loop variable, it is left unchanged.
 
 ### `{{position::A}}`
 
@@ -588,7 +690,7 @@ This will be replaced with a random number between 1 and `A`. if `A` starts with
 
 ### `{{rollp::A}}`
 
-> Alias: `{{rollp:A}}`
+> Alias: `{{rollp:A}}`, `{{rollpick::A}}`
 
 This would work same as `{{roll::A}}`, except the seed would be the same for the same message which would make the result consistent.
 
@@ -608,6 +710,77 @@ This will be replaced with an array of numbers from 0 to `A` - 1.
 
 This will be replaced with the length of `A`. this would not work with arrays.
 
+### `{{tonumber::A}}`
+
+This would trim all non-numeric characters except for `.`. This doesn't guarantee that the result is a valid number.
+
+### `{{return::A}}`
+
+If this syntax is provided, the message will be replaced with `A` and the rest of the message will be ignored.
+
+### `{{button::A::B}}`
+
+This will add a button HTML element with label `A`. When clicked, it runs trigger `B`. See the [Trigger Script (Lua Mode)](/srp/lua.md) documentation for trigger behavior.
+
+### `{{risu}}`
+
+This will add the Risu icon at the default size.
+
+### `{{risu::A}}`
+
+This will add the Risu icon with width and height set to `A` pixels.
+
+### `{{call::A::B::C...}}`
+
+This calls the function block named `A` with arguments `B`, `C`, and so on, and is replaced with the function result.
+
+### `{{hash::A}}`
+
+This will be replaced with a deterministic 7-digit number generated from `A`. The same input always returns the same output.
+
+### `{{metadata::A}}`
+
+This will be replaced with metadata value `A`.
+
+<details>
+<summary>Supported metadata keys</summary>
+
+| Key | Description |
+| --- | --- |
+| `mobile` | Returns `1` in a mobile environment, otherwise `0`. |
+| `local` | Returns `1` in a local app environment, otherwise `0`. |
+| `node` | Returns `1` in a Node server environment, otherwise `0`. |
+| `version` | Returns the app version. |
+| `majorversion`, `majorver`, `major` | Returns only the first number of the app version. |
+| `language`, `locale`, `lang` | Returns the language value configured in the app. |
+| `browserlanguage`, `browserlocale`, `browserlang` | Returns the browser language value. |
+| `modelshortname` | Returns the short name of the current model. |
+| `modelname` | Returns the current model name. |
+| `modelinternalid` | Returns the internal ID of the current model. |
+| `modelformat` | Returns the format value of the current model. |
+| `modelprovider` | Returns the provider value of the current model. |
+| `modeltokenizer` | Returns the tokenizer value of the current model. |
+| `risutype` | Returns the runtime environment as one of `local`, `node`, or `web`. |
+| `maxcontext` | Returns the current maximum context length. |
+
+</details>
+
+If `A` is not a valid metadata key, this will be replaced with an error string.
+
+### `{{hiddenkey::A}}`
+
+This works as a hidden key for activating lorebook entries while keeping `A` out of the model request.
+
+### `{{// A}}`
+
+This is a comment syntax. It can be used to comment out CBS code.
+
+### `{{comment::A}}`
+
+This is a visible comment syntax. Unlike `{{// A}}`, the comment content is displayed in the chat.
+
+### Escaping Syntaxes
+
 ### `{{none}}`
 
 > Alias: `{{blank}}`
@@ -622,21 +795,101 @@ If its used in first message, the first message will work as if it not exists.
 
 This will be replaced with a line break.
 
-### `{{tonumber::A}}`
+### `{{cbr}}`
 
-This would trim all non-numeric characters except for `.`. This doesn't guarantee that the result is a valid number.
+> Alias: `{{cnl}}`, `{{cnewline}}`
 
-### `{{return::A}}`
+This will be replaced with a line break character `\n` without actually creating a new line in the output.
 
-If this syntax is provided, the message will be replaced with `A` and the rest of the message will be ignored.
+### `{{displayescapedcurlybracketopen}}`
 
-### `{{func::A::B::C...}}`
+> Alias: `{{decbo}}`
 
-This will be replaced with the result of the function `A` with arguments `B`, `C`, and so on.
+This will be replaced with a special character that displays as `{` but is not parsed as CBS syntax.
 
-### `{{arg::A}}`
+### `{{displayescapedcurlybracketclose}}`
 
-This will be replaced with the argument index `A` of the function if it is called with `{{func::A::B::C...}}`.
+> Alias: `{{decbc}}`
+
+This will be replaced with a special character that displays as `}` but is not parsed as CBS syntax.
+
+### `{{doubledisplayescapedcurlybracketopen}}`
+
+> Alias: `{{ddecbo}}`, `{{bo}}`
+
+This will be replaced with special characters that display as `{{` but are not parsed as CBS syntax.
+
+### `{{doubledisplayescapedcurlybracketclose}}`
+
+> Alias: `{{ddecbc}}`, `{{bc}}`
+
+This will be replaced with special characters that display as `}}` but are not parsed as CBS syntax.
+
+### `{{displayescapedbracketopen}}`
+
+> Alias: `{{debo}}`, `{{(}}`
+
+This will be replaced with a special character that displays as `(` without interfering with parsing.
+
+### `{{displayescapedbracketclose}}`
+
+> Alias: `{{debc}}`, `{{)}}`
+
+This will be replaced with a special character that displays as `)` without interfering with parsing.
+
+### `{{displayescapedanglebracketopen}}`
+
+> Alias: `{{deabo}}`, `{{<}}`
+
+This will be replaced with a special character that displays as `<` without interfering with HTML parsing.
+
+### `{{displayescapedanglebracketclose}}`
+
+> Alias: `{{deabc}}`, `{{>}}`
+
+This will be replaced with a special character that displays as `>` without interfering with HTML parsing.
+
+### `{{displayescapedcolon}}`
+
+> Alias: `{{dec}}`, `{{:}}`
+
+This will be replaced with a special character that displays as `:` but is not parsed as a CBS argument separator.
+
+### `{{displayescapedsemicolon}}`
+
+> Alias: `{{;}}`
+
+This will be replaced with a special character that displays as `;` without interfering with parsing.
+
+### Rendering Syntaxes
+
+### `{{tex::A}}`
+
+> Alias: `{{latex::A}}`, `{{katex::A}}`
+
+This will render `A` as a LaTeX math expression.
+
+### `{{ruby::A::B}}`
+
+> Alias: `{{furigana::A::B}}`
+
+This will render ruby text for East Asian typography. `A` is the base text and `B` is the ruby text.
+
+### `{{codeblock::A}}`
+
+This will render `A` as a code block.
+
+### `{{codeblock::A::B}}`
+
+This will render `B` as a code block with language `A` for syntax highlighting.
+
+### `{{bkspc}}`
+
+This removes the last word from the current output.
+
+### `{{erase}}`
+
+This removes the last sentence from the current output.
 
 ## Block Syntaxes
 
@@ -651,18 +904,22 @@ Hello Alice!
 {{/if}}
 ```
 
-### `{{#if-pure A}}`
+### `{{#if_pure A}}`
 
 Same as `{{#if A}}`, but it would keep the indentation and whitespace of the content.
 
 
-### `{{#each A B}}`
+### `{{#each A as B}}`
 
-This will be replaced with the `content` for each element of the array `A`. The current element of the array will be replaced with `B`.
+Parses `A` as an array and repeats the block content for each element. Inside the block, `{{slot::B}}` is replaced with the current element.
+
+Compatibility form `{{#each A B}}` is also supported, but `{{#each A as B}}` is preferred.
+
+Use `{{#each::keep A as B}}` to preserve whitespace inside the block.
 
 Example:
 ```
-{{#each {{array::chicken::pizza::hamburger}} item}}
+{{#each {{array::chicken::pizza::hamburger}} as item}}
 {{slot::item}}
 {{/each}}
 ```
@@ -680,8 +937,67 @@ chickenpizzahamburger
 
 ### `{{#func A}}`
 
-This will be replaced with the result of the function `A`. The function can be called with `{{func::A::B::C...}}`.
+This defines a function block named `A`. The block can be called with `{{call::A::B::C...}}`.
+
+Inside the function block, use `{{arg::N}}` to read an argument passed by `{{call}}`. `{{arg::0}}` is the function name, so user-provided arguments start from `{{arg::1}}`.
+
+Example:
+```
+{{#func greet}}
+Hello, {{arg::1}}!
+{{/func}}
+{{call::greet::Alice}}
+```
+
+Output:
+```
+Hello, Alice!
+```
 
 ### `{{#pure_display}}`
 
 This will be replaced with the `content` without any formatting. This is useful for displaying raw text.
+
+### `{{#when A}}`
+
+This will include the block content if `A` is truthy. `1` and `true` are treated as true; other values are treated as false.
+
+`#when` can also use operators with `::`, such as `and`, `or`, `is`, `isnot`, `>`, `<`, `>=`, `<=`, and `not`.
+
+Example:
+```
+{{#when::A::and::B}}
+Content
+{{/when}}
+```
+
+Advanced operators include `keep` for preserving whitespace, `legacy` for old `#if`-style whitespace handling, `var` for checking a variable, and `toggle` for checking a toggle.
+
+### `{{:else}}`
+
+This is an else branch for `{{#when}}`. It is used inside a `#when` block.
+
+Example:
+```
+{{#when A}}
+If A is true
+{{:else}}
+If A is false
+{{/when}}
+```
+
+### `{{#escape}}`
+
+This will treat the block content as literal text by escaping curly braces and parentheses, so CBS syntax inside the block is not evaluated.
+
+Use `{{#escape::keep}}` to preserve whitespace inside the block.
+
+### `{{#puredisplay}}`
+
+This is useful for displaying raw CBS syntax, HTML, or other content without parsing.
+
+### `{{#pure}}`
+
+This displays the block content without CBS processing.
+
+This is an old syntax and is deprecated. Use `{{#puredisplay}}` instead.
